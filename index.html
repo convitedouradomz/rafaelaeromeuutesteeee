@@ -1,1132 +1,1091 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Casamento Rafaela & Romeu</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-      /* RESET E CONFIGURAÇÕES GERAIS */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Georgia", "Times New Roman", serif;
-        color: #5d4037;
-        background-color: #fefefe;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      /* ESTILO LIMINTSO - CORES E FONTES */
-      :root {
-        --cor-dourado: #c9a66b;
-        --cor-marrom: #5d4037;
-        --cor-marrom-claro: #8d6e63;
-        --cor-creme: #f5f1e8;
-        --cor-branco: #ffffff;
-      }
-
-      /* SEÇÃO HERO / CAPA */
-      .hero-section {
-        height: 100vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-          url(migueleluana1.jpg");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        padding: 20px;
-        position: relative;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        animation: fadeInUp 1.5s ease-out;
-      }
-
-      .nomes-noivos {
-        font-size: 4.5rem;
-        font-weight: normal;
-        letter-spacing: 3px;
-        margin-bottom: 10px;
-        font-family: "Playfair Display", serif;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .data-casamento {
-        font-size: 1.8rem;
-        letter-spacing: 8px;
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        font-weight: 300;
-      }
-
-      .frase-romantica {
-        font-size: 1.3rem;
-        font-style: italic;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
-
-      /* SETA DE SCROLL */
-      .scroll-indicator {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: 1.8rem;
-        animation: bounce 2s infinite;
-        cursor: pointer;
-      }
-
-      /* CONTEÚDO PRINCIPAL */
-      .main-content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 60px 20px;
-      }
-
-      .texto-convite {
-        background-color: var(--cor-creme);
-        padding: 50px 40px;
-        border-radius: 5px;
-        margin-bottom: 40px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-      }
-
-      .titulo-secao {
-        font-size: 2.2rem;
-        color: var(--cor-marrom);
-        margin-bottom: 25px;
-        font-weight: normal;
-        text-align: center;
-        position: relative;
-        padding-bottom: 15px;
-      }
-
-      .titulo-secao:after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 2px;
-        background-color: var(--cor-dourado);
-      }
-
-      .paragrafo-convite {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        margin-bottom: 20px;
-        color: var(--cor-marrom);
-      }
-
-      /* CONTADOR REGRESSIVO */
-      .contador-section {
-        background-color: var(--cor-branco);
-        padding: 50px 20px;
-        margin: 40px 0;
-        border-radius: 5px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-      }
-
-      .contador-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-top: 30px;
-      }
-
-      .contador-item {
-        text-align: center;
-        min-width: 120px;
-      }
-
-      .contador-numero {
-        font-size: 3.5rem;
-        font-weight: 300;
-        color: var(--cor-marrom);
-        line-height: 1;
-        margin-bottom: 10px;
-        font-family: "Playfair Display", serif;
-      }
-
-      .contador-label {
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--cor-marrom-claro);
-      }
-
-      /* SAUDAÇÃO PERSONALIZADA */
-      .saudacao-section {
-        background-color: var(--cor-branco);
-        padding: 40px;
-        border-radius: 5px;
-        margin-bottom: 40px;
-        border-left: 4px solid var(--cor-dourado);
-      }
-
-      .nome-convidado {
-        font-size: 2rem;
-        color: var(--cor-marrom);
-        margin-bottom: 15px;
-      }
-
-      /* AGENDA DO CASAMENTO */
-      .agenda-section {
-        background-color: var(--cor-creme);
-        padding: 50px 40px;
-        border-radius: 5px;
-        margin-bottom: 40px;
-      }
-
-      .evento-item {
-        display: flex;
-        align-items: center;
-        padding: 25px 0;
-        border-bottom: 1px dashed var(--cor-marrom-claro);
-      }
-
-      .evento-item:last-child {
-        border-bottom: none;
-      }
-
-      .evento-hora {
-        font-size: 1.8rem;
-        color: var(--cor-marrom);
-        min-width: 120px;
-        font-weight: 300;
-      }
-
-      .evento-detalhes {
-        flex: 1;
-      }
-
-      .evento-titulo {
-        font-size: 1.4rem;
-        color: var(--cor-marrom);
-        margin-bottom: 5px;
-      }
-
-      .evento-local {
-        font-size: 1.1rem;
-        color: var(--cor-marrom-claro);
-        margin-bottom: 3px;
-      }
-
-      .evento-endereco {
-        font-size: 1rem;
-        color: var(--cor-marrom-claro);
-        font-style: italic;
-      }
-
-      .botao-mapa {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background-color: transparent;
-        color: var(--cor-marrom);
-        border: 1px solid var(--cor-marrom);
-        padding: 8px 20px;
-        border-radius: 3px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        margin-top: 10px;
-        transition: all 0.3s;
-      }
-
-      .botao-mapa:hover {
-        background-color: var(--cor-marrom);
-        color: white;
-      }
-
-      /* OS NOIVOS */
-      .noivos-section {
-        background-color: var(--cor-branco);
-        padding: 50px 40px;
-        border-radius: 5px;
-        margin-bottom: 40px;
-      }
-
-      .noivos-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 60px;
-        margin-top: 40px;
-      }
-
-      .noivo-card {
-        text-align: center;
-        max-width: 300px;
-      }
-
-      .foto-noivo {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 20px;
-        border: 8px solid var(--cor-creme);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .nome-noivo {
-        font-size: 1.8rem;
-        color: var(--cor-marrom);
-        margin-bottom: 8px;
-      }
-
-      .pais-noivo {
-        font-size: 1.1rem;
-        color: var(--cor-marrom-claro);
-        margin-bottom: 15px;
-        font-style: italic;
-      }
-
-      .bio-noivo {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: var(--cor-marrom);
-      }
-
-      /* GALERIA DE FOTOS */
-      .galeria-section {
-        padding: 50px 20px;
-        margin-bottom: 40px;
-      }
-
-      .galeria-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-        margin-top: 30px;
-      }
-
-      .galeria-item {
-        height: 200px;
-        overflow: hidden;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .galeria-imagem {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-
-      .galeria-item:hover .galeria-imagem {
-        transform: scale(1.05);
-      }
-
-      /* MODAL GALERIA */
-      .modal-galeria {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-imagem {
-        max-width: 90%;
-        max-height: 90%;
-        object-fit: contain;
-      }
-
-      .fechar-modal {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        color: white;
-        font-size: 2.5rem;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      /* RSVP */
-      .rsvp-section {
-        background-color: var(--cor-creme);
-        padding: 50px 40px;
-        border-radius: 5px;
-        margin-bottom: 40px;
-        text-align: center;
-      }
-
-      .rsvp-botoes {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 30px;
-      }
-
-      .rsvp-botao {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background-color: var(--cor-marrom);
-        color: white;
-        padding: 15px 30px;
-        border-radius: 3px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-      }
-
-      .rsvp-botao:hover {
-        background-color: var(--cor-marrom-claro);
-      }
-
-      /* PRESENTES */
-      .presentes-section {
-        background-color: var(--cor-branco);
-        padding: 50px 40px;
-        border-radius: 5px;
-        margin-bottom: 40px;
-        border-top: 3px solid var(--cor-dourado);
-      }
-
-      .info-presente {
-        margin-bottom: 20px;
-        padding-left: 20px;
-        border-left: 2px solid var(--cor-creme);
-      }
-
-      .info-label {
-        font-weight: bold;
-        color: var(--cor-marrom);
-        display: inline-block;
-        width: 100px;
-      }
-
-      /* RODAPÉ */
-      .rodape {
-        background-color: var(--cor-marrom);
-        color: var(--cor-creme);
-        padding: 40px 20px;
-        text-align: center;
-      }
-
-      .logo-rodape {
-        max-width: 150px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-      }
-
-      .texto-rodape {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-
-      .instagram-link {
-        color: var(--cor-dourado);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-top: 10px;
-      }
-
-      /* MÚSICA */
-      .player-musica {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 100;
-      }
-
-      .botao-musica {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--cor-dourado);
-        color: white;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      /* ANIMAÇÕES */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
+        /* RESET E CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
 
-      @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateY(0) translateX(-50%);
+        html {
+            scroll-behavior: smooth;
         }
-        40% {
-          transform: translateY(-10px) translateX(-50%);
-        }
-        60% {
-          transform: translateY(-5px) translateX(-50%);
-        }
-      }
 
-      /* RESPONSIVIDADE */
-      @media (max-width: 768px) {
+        body {
+            font-family: "Georgia", "Times New Roman", serif;
+            color: #5d4037;
+            background-color: #fefefe;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ESTILO LIMINTSO - CORES E FONTES */
+        :root {
+            --cor-dourado: #c9a66b;
+            --cor-marrom: #5d4037;
+            --cor-marrom-claro: #8d6e63;
+            --cor-creme: #f5f1e8;
+            --cor-branco: #ffffff;
+        }
+
+        /* SEÇÃO HERO / CAPA */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url("migueleluana1.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
         .nomes-noivos {
-          font-size: 3rem;
+            font-size: 4.5rem;
+            font-weight: normal;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-family: "Playfair Display", serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .data-casamento {
-          font-size: 1.3rem;
-          letter-spacing: 4px;
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: 300;
         }
 
-        .contador-container {
-          gap: 15px;
+        .frase-romantica {
+            font-size: 1.3rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
-        .contador-item {
-          min-width: 80px;
+        /* SETA DE SCROLL */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.8rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
         }
 
-        .contador-numero {
-          font-size: 2.5rem;
-        }
-
-        .noivos-container {
-          gap: 40px;
-        }
-
-        .evento-item {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .evento-hora {
-          margin-bottom: 10px;
-        }
-
-        .galeria-container {
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        }
-
-        .rsvp-botoes {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .rsvp-botao {
-          width: 100%;
-          max-width: 300px;
-          justify-content: center;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .nomes-noivos {
-          font-size: 2.5rem;
-        }
-
+        /* CONTEÚDO PRINCIPAL */
         .main-content {
-          padding: 40px 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        .texto-convite,
-        .agenda-section,
-        .noivos-section,
-        .rsvp-section,
-        .presentes-section {
-          padding: 30px 20px;
+        .texto-convite {
+            background-color: var(--cor-creme);
+            padding: 50px 40px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
 
         .titulo-secao {
-          font-size: 1.8rem;
+            font-size: 2.2rem;
+            color: var(--cor-marrom);
+            margin-bottom: 25px;
+            font-weight: normal;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .titulo-secao:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--cor-dourado);
+        }
+
+        .paragrafo-convite {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--cor-marrom);
+        }
+
+        /* CONTADOR REGRESSIVO */
+        .contador-section {
+            background-color: var(--cor-branco);
+            padding: 50px 20px;
+            margin: 40px 0;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contador-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contador-item {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .contador-numero {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--cor-marrom);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .contador-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cor-marrom-claro);
+        }
+
+        /* SAUDAÇÃO PERSONALIZADA */
+        .saudacao-section {
+            background-color: var(--cor-branco);
+            padding: 40px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--cor-dourado);
+        }
+
+        .nome-convidado {
+            font-size: 2rem;
+            color: var(--cor-marrom);
+            margin-bottom: 15px;
+        }
+
+        /* AGENDA DO CASAMENTO */
+        .agenda-section {
+            background-color: var(--cor-creme);
+            padding: 50px 40px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+
+        .evento-item {
+            display: flex;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px dashed var(--cor-marrom-claro);
+        }
+
+        .evento-item:last-child {
+            border-bottom: none;
+        }
+
+        .evento-hora {
+            font-size: 1.8rem;
+            color: var(--cor-marrom);
+            min-width: 120px;
+            font-weight: 300;
+        }
+
+        .evento-detalhes {
+            flex: 1;
+        }
+
+        .evento-titulo {
+            font-size: 1.4rem;
+            color: var(--cor-marrom);
+            margin-bottom: 5px;
+        }
+
+        .evento-local {
+            font-size: 1.1rem;
+            color: var(--cor-marrom-claro);
+            margin-bottom: 3px;
+        }
+
+        .evento-endereco {
+            font-size: 1rem;
+            color: var(--cor-marrom-claro);
+            font-style: italic;
+        }
+
+        .botao-mapa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            color: var(--cor-marrom);
+            border: 1px solid var(--cor-marrom);
+            padding: 8px 20px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .botao-mapa:hover {
+            background-color: var(--cor-marrom);
+            color: white;
+        }
+
+        /* OS NOIVOS */
+        .noivos-section {
+            background-color: var(--cor-branco);
+            padding: 50px 40px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+
+        .noivos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .noivo-card {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .foto-noivo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 8px solid var(--cor-creme);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nome-noivo {
+            font-size: 1.8rem;
+            color: var(--cor-marrom);
+            margin-bottom: 8px;
+        }
+
+        .pais-noivo {
+            font-size: 1.1rem;
+            color: var(--cor-marrom-claro);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .bio-noivo {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--cor-marrom);
+        }
+
+        /* GALERIA DE FOTOS */
+        .galeria-section {
+            padding: 50px 20px;
+            margin-bottom: 40px;
         }
 
         .galeria-container {
-          grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
         }
-      }
 
-      /* UTILITÁRIOS */
-      .destaque {
-        color: var(--cor-dourado);
-        font-weight: bold;
-      }
+        .galeria-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-      .texto-centralizado {
-        text-align: center;
-      }
+        .galeria-imagem {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
 
-      .mb-20 {
-        margin-bottom: 20px;
-      }
+        .galeria-item:hover .galeria-imagem {
+            transform: scale(1.05);
+        }
 
-      .mb-30 {
-        margin-bottom: 30px;
-      }
+        /* MODAL GALERIA */
+        .modal-galeria {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
 
-      .mt-30 {
-        margin-top: 30px;
-      }
+        .modal-imagem {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .fechar-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* RSVP */
+        .rsvp-section {
+            background-color: var(--cor-creme);
+            padding: 50px 40px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .rsvp-botoes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .rsvp-botao {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--cor-marrom);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 3px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .rsvp-botao:hover {
+            background-color: var(--cor-marrom-claro);
+        }
+
+        /* PRESENTES */
+        .presentes-section {
+            background-color: var(--cor-branco);
+            padding: 50px 40px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+            border-top: 3px solid var(--cor-dourado);
+        }
+
+        .info-presente {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--cor-creme);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--cor-marrom);
+            display: inline-block;
+            width: 100px;
+        }
+
+        /* RODAPÉ */
+        .rodape {
+            background-color: var(--cor-marrom);
+            color: var(--cor-creme);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo-rodape {
+            max-width: 150px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .texto-rodape {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .instagram-link {
+            color: var(--cor-dourado);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .nomes-noivos {
+                font-size: 3rem;
+            }
+
+            .data-casamento {
+                font-size: 1.3rem;
+                letter-spacing: 4px;
+            }
+
+            .contador-container {
+                gap: 15px;
+            }
+
+            .contador-item {
+                min-width: 80px;
+            }
+
+            .contador-numero {
+                font-size: 2.5rem;
+            }
+
+            .noivos-container {
+                gap: 40px;
+            }
+
+            .evento-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .evento-hora {
+                margin-bottom: 10px;
+            }
+
+            .galeria-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .rsvp-botoes {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rsvp-botao {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nomes-noivos {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                padding: 40px 15px;
+            }
+
+            .texto-convite,
+            .agenda-section,
+            .noivos-section,
+            .rsvp-section,
+            .presentes-section {
+                padding: 30px 20px;
+            }
+
+            .titulo-secao {
+                font-size: 1.8rem;
+            }
+
+            .galeria-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* UTILITÁRIOS */
+        .destaque {
+            color: var(--cor-dourado);
+            font-weight: bold;
+        }
+
+        .texto-centralizado {
+            text-align: center;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .mt-30 {
+            margin-top: 30px;
+        }
     </style>
-  </head>
-  <body>
-    <!-- MÚSICA DE FUNDO -->
-    <div class="player-musica">
-      <button id="botao-musica" class="botao-musica">
-        <i class="fas fa-play"></i>
-      </button>
-      <audio id="musica-fundo" loop>
+</head>
+<body>
+    <!-- MÚSICA DE FUNDO (SEM BOTÃO VISÍVEL) -->
+    <audio id="musica-fundo" loop>
         <source src="Tems_MeAU.mp3" type="audio/mp3" />
-      </audio>
-    </div>
+    </audio>
 
     <!-- SEÇÃO HERO / CAPA -->
     <section class="hero-section">
-      <div class="hero-content">
-        <h1 class="nomes-noivos">Rafaela & Romeu</h1>
-        <p class="data-casamento">26 · 07 · 2026</p>
-        <p class="frase-romantica">
-          Com a bênção de Deus, nossas famílias e amigos, unimos nossas vidas
-          para sempre
-        </p>
-      </div>
-      <div class="scroll-indicator" id="scroll-indicator">
-        <i class="fas fa-chevron-down"></i>
-      </div>
+        <div class="hero-content">
+            <h1 class="nomes-noivos">Rafaela & Romeu</h1>
+            <p class="data-casamento">26 · 07 · 2026</p>
+            <p class="frase-romantica">
+                Com a bênção de Deus, nossas famílias e amigos, unimos nossas vidas
+                para sempre
+            </p>
+        </div>
+        <div class="scroll-indicator" id="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="main-content">
-      <!-- TEXTO DO CONVITE -->
-      <section class="texto-convite">
-        <h2 class="titulo-secao">Com a bênção de Deus</h2>
-        <p class="paragrafo-convite">
-          É com enorme alegria e corações transbordantes de felicidade que
-          anunciamos a celebração do nosso amor. Depois de uma linda jornada a
-          dois, decidimos oficializar nossa união perante Deus, nossa família e
-          amigos.
-        </p>
-        <p class="paragrafo-convite">
-          Convidamos você, que faz parte da nossa história, para compartilhar
-          conosco este momento único e especial. Sua presença será a maior honra
-          e completará nossa felicidade neste dia tão significativo.
-        </p>
-        <p class="paragrafo-convite">
-          Juntem-se a nós para celebrar o início desta nova etapa, repleta de
-          amor, sonhos e promessas para uma vida inteira juntos.
-        </p>
-      </section>
-
-      <!-- CONTADOR REGRESSIVO -->
-      <section class="contador-section">
-        <h2 class="titulo-secao">Contagem Regressiva</h2>
-        <p class="texto-centralizado mb-30">Faltam apenas...</p>
-        <div class="contador-container">
-          <div class="contador-item">
-            <div class="contador-numero" id="dias-contador">00</div>
-            <div class="contador-label">Dias</div>
-          </div>
-          <div class="contador-item">
-            <div class="contador-numero" id="horas-contador">00</div>
-            <div class="contador-label">Horas</div>
-          </div>
-          <div class="contador-item">
-            <div class="contador-numero" id="minutos-contador">00</div>
-            <div class="contador-label">Minutos</div>
-          </div>
-          <div class="contador-item">
-            <div class="contador-numero" id="segundos-contador">00</div>
-            <div class="contador-label">Segundos</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SAUDAÇÃO PERSONALIZADA -->
-      <section class="saudacao-section">
-        <h3 class="nome-convidado" id="nome-convidado">
-          Caro(a), Convidado(a) Especial
-        </h3>
-        <p class="paragrafo-convite">
-          Sua presença é muito importante para nós. Este convite é válido para
-          você e seu acompanhante.
-        </p>
-        <p class="paragrafo-convite">
-          Por favor, confirme sua presença até
-          <span class="destaque">15 de Julho de 2026</span>.
-        </p>
-      </section>
-
-      <!-- AGENDA DO CASAMENTO -->
-      <section class="agenda-section">
-        <h2 class="titulo-secao">Agenda do Casamento</h2>
-        <div class="eventos-lista">
-          <div class="evento-item">
-            <div class="evento-hora">14:00</div>
-            <div class="evento-detalhes">
-              <h3 class="evento-titulo">Cerimónia Religiosa</h3>
-              <p class="evento-local">Igreja de Nossa Senhora da Conceição</p>
-              <p class="evento-endereco">Maputo, Moçambique</p>
-              <a
-                href="https://maps.google.com/?q=Igreja+Nossa+Senhora+da+Conceição+Maputo"
-                class="botao-mapa"
-                target="_blank"
-              >
-                <i class="fas fa-map-marker-alt"></i> Ver no mapa
-              </a>
-            </div>
-          </div>
-          <div class="evento-item">
-            <div class="evento-hora">16:00</div>
-            <div class="evento-detalhes">
-              <h3 class="evento-titulo">Sessão de Fotos</h3>
-              <p class="evento-local">Jardim Tunduru</p>
-              <p class="evento-endereco">Maputo, Moçambique</p>
-              <a
-                href="https://maps.google.com/?q=Jardim+Tunduru+Maputo"
-                class="botao-mapa"
-                target="_blank"
-              >
-                <i class="fas fa-map-marker-alt"></i> Ver no mapa
-              </a>
-            </div>
-          </div>
-          <div class="evento-item">
-            <div class="evento-hora">18:00</div>
-            <div class="evento-detalhes">
-              <h3 class="evento-titulo">Copo d'Água</h3>
-              <p class="evento-local">Hotel Polana Serena</p>
-              <p class="evento-endereco">Maputo, Moçambique</p>
-              <a
-                href="https://maps.google.com/?q=Hotel+Polana+Maputo"
-                class="botao-mapa"
-                target="_blank"
-              >
-                <i class="fas fa-map-marker-alt"></i> Ver no mapa
-              </a>
-            </div>
-          </div>
-          <div class="evento-item">
-            <div class="evento-hora">20:00</div>
-            <div class="evento-detalhes">
-              <h3 class="evento-titulo">Festa de Recepção</h3>
-              <p class="evento-local">
-                Centro de Conferências Joaquim Chissano
-              </p>
-              <p class="evento-endereco">Maputo, Moçambique</p>
-              <a
-                href="https://maps.google.com/?q=Centro+Conferências+Joaquim+Chissano+Maputo"
-                class="botao-mapa"
-                target="_blank"
-              >
-                <i class="fas fa-map-marker-alt"></i> Ver no mapa
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- OS NOIVOS -->
-      <section class="noivos-section">
-        <h2 class="titulo-secao">Os Noivos</h2>
-        <div class="noivos-container">
-          <!-- NOIVA -->
-          <div class="noivo-card">
-            <img
-              src="migueleluana2.jpg"
-              alt="Rafaela Macuacua"
-              class="foto-noivo"
-            />
-            <h3 class="nome-noivo">Rafaela Macuacua</h3>
-            <p class="pais-noivo">Filha de Sheila Ernesto e Rafael Macuacua</p>
-            <p class="bio-noivo">
-              Rafaela é arquiteta, apaixonada por design e pela natureza. Seu
-              sorriso ilumina qualquer ambiente e seu coração generoso cativa a
-              todos ao seu redor.
+        <!-- TEXTO DO CONVITE -->
+        <section class="texto-convite">
+            <h2 class="titulo-secao">Com a bênção de Deus</h2>
+            <p class="paragrafo-convite">
+                É com enorme alegria e corações transbordantes de felicidade que
+                anunciamos a celebração do nosso amor. Depois de uma linda jornada a
+                dois, decidimos oficializar nossa união perante Deus, nossa família e
+                amigos.
             </p>
-          </div>
-          <!-- NOIVO -->
-          <div class="noivo-card">
-            <img
-              src="migueleluana3.jpg"
-              alt="Romeu Fernandes Jr"
-              class="foto-noivo"
-            />
-            <h3 class="nome-noivo">Romeu Fernandes Jr</h3>
-            <p class="pais-noivo">Filho de Fatima Lizo e Romeu Fernandes</p>
-            <p class="bio-noivo">
-              Romeu é engenheiro informático, com um grande sentido de humor e
-              dedicação à família. Sua paciência e bondade são qualidades que
-              encantam todos que o conhecem.
+            <p class="paragrafo-convite">
+                Convidamos você, que faz parte da nossa história, para compartilhar
+                conosco este momento único e especial. Sua presença será a maior honra
+                e completará nossa felicidade neste dia tão significativo.
             </p>
-          </div>
-        </div>
-      </section>
+            <p class="paragrafo-convite">
+                Juntem-se a nós para celebrar o início desta nova etapa, repleta de
+                amor, sonhos e promessas para uma vida inteira juntos.
+            </p>
+        </section>
 
-      <!-- GALERIA DE FOTOS -->
-      <section class="galeria-section">
-        <h2 class="titulo-secao">Nossos Momentos</h2>
-        <div class="galeria-container" id="galeria-container">
-          <!-- As fotos serão inseridas via JavaScript -->
-        </div>
-      </section>
+        <!-- CONTADOR REGRESSIVO -->
+        <section class="contador-section">
+            <h2 class="titulo-secao">Contagem Regressiva</h2>
+            <p class="texto-centralizado mb-30">Faltam apenas...</p>
+            <div class="contador-container">
+                <div class="contador-item">
+                    <div class="contador-numero" id="dias-contador">00</div>
+                    <div class="contador-label">Dias</div>
+                </div>
+                <div class="contador-item">
+                    <div class="contador-numero" id="horas-contador">00</div>
+                    <div class="contador-label">Horas</div>
+                </div>
+                <div class="contador-item">
+                    <div class="contador-numero" id="minutos-contador">00</div>
+                    <div class="contador-label">Minutos</div>
+                </div>
+                <div class="contador-item">
+                    <div class="contador-numero" id="segundos-contador">00</div>
+                    <div class="contador-label">Segundos</div>
+                </div>
+            </div>
+        </section>
 
-      <!-- MODAL DA GALERIA -->
-      <div class="modal-galeria" id="modal-galeria">
-        <button class="fechar-modal">&times;</button>
-        <img
-          class="modal-imagem"
-          id="modal-imagem"
-          src=""
-          alt="Imagem ampliada"
-        />
-      </div>
+        <!-- SAUDAÇÃO PERSONALIZADA -->
+        <section class="saudacao-section">
+            <h3 class="nome-convidado" id="nome-convidado">
+                Caro(a), Convidado(a) Especial
+            </h3>
+            <p class="paragrafo-convite">
+                Sua presença é muito importante para nós. Este convite é válido para
+                você e seu acompanhante.
+            </p>
+            <p class="paragrafo-convite">
+                Por favor, confirme sua presença até
+                <span class="destaque">15 de Julho de 2026</span>.
+            </p>
+        </section>
 
-      <!-- RSVP -->
-      <section class="rsvp-section">
-        <h2 class="titulo-secao">Confirme sua Presença</h2>
-        <p class="paragrafo-convite mb-30">
-          Para nos ajudar nos preparativos, por favor confirme sua presença até
-          15 de Julho de 2026.
-        </p>
-        <div class="rsvp-botoes">
-          <a
-            href="https://wa.me/258841234567?text=Olá!%20Confirmo%20a%20minha%20presença%20no%20casamento%20da%20Rafaela%20e%20do%20Romeu%20em%2026%20de%20Julho%20de%202026."
-            class="rsvp-botao"
-            target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i> Confirmar via WhatsApp
-          </a>
-          <a
-            href="mailto:casamento.rafaela.romeu@gmail.com?subject=Confirmação%20de%20Presença%20-%20Casamento%20Rafaela%20e%20Romeu&body=Olá!%20Confirmo%20a%20minha%20presença%20no%20vosso%20casamento%20no%20dia%2026%20de%20Julho%20de%202026."
-            class="rsvp-botao"
-          >
-            <i class="fas fa-envelope"></i> Confirmar via Email
-          </a>
-        </div>
-      </section>
+        <!-- AGENDA DO CASAMENTO -->
+        <section class="agenda-section">
+            <h2 class="titulo-secao">Agenda do Casamento</h2>
+            <div class="eventos-lista">
+                <div class="evento-item">
+                    <div class="evento-hora">14:00</div>
+                    <div class="evento-detalhes">
+                        <h3 class="evento-titulo">Cerimónia Religiosa</h3>
+                        <p class="evento-local">Igreja de Nossa Senhora da Conceição</p>
+                        <p class="evento-endereco">Maputo, Moçambique</p>
+                        <a
+                            href="https://maps.google.com/?q=Igreja+Nossa+Senhora+da+Conceição+Maputo"
+                            class="botao-mapa"
+                            target="_blank"
+                        >
+                            <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+                <div class="evento-item">
+                    <div class="evento-hora">16:00</div>
+                    <div class="evento-detalhes">
+                        <h3 class="evento-titulo">Sessão de Fotos</h3>
+                        <p class="evento-local">Jardim Tunduru</p>
+                        <p class="evento-endereco">Maputo, Moçambique</p>
+                        <a
+                            href="https://maps.google.com/?q=Jardim+Tunduru+Maputo"
+                            class="botao-mapa"
+                            target="_blank"
+                        >
+                            <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+                <div class="evento-item">
+                    <div class="evento-hora">18:00</div>
+                    <div class="evento-detalhes">
+                        <h3 class="evento-titulo">Copo d'Água</h3>
+                        <p class="evento-local">Hotel Polana Serena</p>
+                        <p class="evento-endereco">Maputo, Moçambique</p>
+                        <a
+                            href="https://maps.google.com/?q=Hotel+Polana+Maputo"
+                            class="botao-mapa"
+                            target="_blank"
+                        >
+                            <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+                <div class="evento-item">
+                    <div class="evento-hora">20:00</div>
+                    <div class="evento-detalhes">
+                        <h3 class="evento-titulo">Festa de Recepção</h3>
+                        <p class="evento-local">
+                            Centro de Conferências Joaquim Chissano
+                        </p>
+                        <p class="evento-endereco">Maputo, Moçambique</p>
+                        <a
+                            href="https://maps.google.com/?q=Centro+Conferências+Joaquim+Chissano+Maputo"
+                            class="botao-mapa"
+                            target="_blank"
+                        >
+                            <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <!-- PRESENTES -->
-      <section class="presentes-section">
-        <h2 class="titulo-secao">Presentes</h2>
-        <p class="paragrafo-convite mb-30">
-          Sua presença no nosso casamento é o maior presente que poderíamos
-          receber. No entanto, se desejar nos presentear para nossa nova vida
-          juntos, deixamos aqui algumas sugestões:
-        </p>
-        <div class="info-presente">
-          <span class="info-label">MB WAY:</span> +258 84 474 7730
+        <!-- OS NOIVOS -->
+        <section class="noivos-section">
+            <h2 class="titulo-secao">Os Noivos</h2>
+            <div class="noivos-container">
+                <!-- NOIVA -->
+                <div class="noivo-card">
+                    <img
+                        src="migueleluana2.jpg"
+                        alt="Rafaela Macuacua"
+                        class="foto-noivo"
+                    />
+                    <h3 class="nome-noivo">Rafaela Macuacua</h3>
+                    <p class="pais-noivo">Filha de Sheila Ernesto e Rafael Macuacua</p>
+                    <p class="bio-noivo">
+                        Rafaela é arquiteta, apaixonada por design e pela natureza. Seu
+                        sorriso ilumina qualquer ambiente e seu coração generoso cativa a
+                        todos ao seu redor.
+                    </p>
+                </div>
+                <!-- NOIVO -->
+                <div class="noivo-card">
+                    <img
+                        src="migueleluana3.jpg"
+                        alt="Romeu Fernandes Jr"
+                        class="foto-noivo"
+                    />
+                    <h3 class="nome-noivo">Romeu Fernandes Jr</h3>
+                    <p class="pais-noivo">Filho de Fatima Lizo e Romeu Fernandes</p>
+                    <p class="bio-noivo">
+                        Romeu é engenheiro informático, com um grande sentido de humor e
+                        dedicação à família. Sua paciência e bondade são qualidades que
+                        encantam todos que o conhecem.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERIA DE FOTOS -->
+        <section class="galeria-section">
+            <h2 class="titulo-secao">Nossos Momentos</h2>
+            <div class="galeria-container" id="galeria-container">
+                <!-- As fotos serão inseridas via JavaScript -->
+            </div>
+        </section>
+
+        <!-- MODAL DA GALERIA -->
+        <div class="modal-galeria" id="modal-galeria">
+            <button class="fechar-modal">&times;</button>
+            <img
+                class="modal-imagem"
+                id="modal-imagem"
+                src=""
+                alt="Imagem ampliada"
+            />
         </div>
-        <div class="info-presente">
-          <span class="info-label">IBAN:</span> MZ55 0000 0000 0000 0000 0000 0
-        </div>
-        <div class="info-presente">
-          <span class="info-label">Contato:</span> +258 84 066 0750 (Romeu) /
-          +258 84 474 7730 (Rafaela)
-        </div>
-        <div class="info-presente">
-          <span class="info-label">Lista:</span> Loja de Presentes - Shopping
-          Maputo
-        </div>
-      </section>
+
+        <!-- RSVP -->
+        <section class="rsvp-section">
+            <h2 class="titulo-secao">Confirme sua Presença</h2>
+            <p class="paragrafo-convite mb-30">
+                Para nos ajudar nos preparativos, por favor confirme sua presença até
+                15 de Julho de 2026.
+            </p>
+            <div class="rsvp-botoes">
+                <a
+                    href="https://wa.me/258841234567?text=Olá!%20Confirmo%20a%20minha%20presença%20no%20casamento%20da%20Rafaela%20e%20do%20Romeu%20em%2026%20de%20Julho%20de%202026."
+                    class="rsvp-botao"
+                    target="_blank"
+                >
+                    <i class="fab fa-whatsapp"></i> Confirmar via WhatsApp
+                </a>
+                <a
+                    href="mailto:casamento.rafaela.romeu@gmail.com?subject=Confirmação%20de%20Presença%20-%20Casamento%20Rafaela%20e%20Romeu&body=Olá!%20Confirmo%20a%20minha%20presença%20no%20vosso%20casamento%20no%20dia%2026%20de%20Julho%20de%202026."
+                    class="rsvp-botao"
+                >
+                    <i class="fas fa-envelope"></i> Confirmar via Email
+                </a>
+            </div>
+        </section>
+
+        <!-- PRESENTES -->
+        <section class="presentes-section">
+            <h2 class="titulo-secao">Presentes</h2>
+            <p class="paragrafo-convite mb-30">
+                Sua presença no nosso casamento é o maior presente que poderíamos
+                receber. No entanto, se desejar nos presentear para nossa nova vida
+                juntos, deixamos aqui algumas sugestões:
+            </p>
+            <div class="info-presente">
+                <span class="info-label">MB WAY:</span> +258 84 123 4567
+            </div>
+            <div class="info-presente">
+                <span class="info-label">IBAN:</span> MZ55 0000 0000 0000 0000 0000 0
+            </div>
+            <div class="info-presente">
+                <span class="info-label">Contato:</span> +258 84 123 4567 (Romeu) /
+                +258 85 765 4321 (Rafaela)
+            </div>
+            <div class="info-presente">
+                <span class="info-label">Lista:</span> Loja de Presentes - Shopping
+                Maputo
+            </div>
+        </section>
     </div>
 
     <!-- RODAPÉ -->
     <footer class="rodape">
-      <img
-        src="logoo.jpeg"
-        alt="Convites Dourados MZ"
-        class="logo-rodape"
-      />
-      <p class="texto-rodape">Um produto do Convites Dourados MZ</p>
-      <a
-        href="https://instagram.com/convitesdourados_mz"
-        class="instagram-link"
-        target="_blank"
-      >
-        <i class="fab fa-instagram"></i> @convitesdourados_mz
-      </a>
+        <img
+            src="logoo.jpeg"
+            alt="Convites Dourados MZ"
+            class="logo-rodape"
+        />
+        <p class="texto-rodape">Um produto do Convites Dourados MZ</p>
+        <a
+            href="https://instagram.com/convitesdourados_mz"
+            class="instagram-link"
+            target="_blank"
+        >
+            <i class="fab fa-instagram"></i> @convitesdourados_mz
+        </a>
     </footer>
 
     <!-- JAVASCRIPT -->
     <script>
-      // CONFIGURAÇÕES
-      const DATA_CASAMENTO = new Date("July 26, 2026 14:00:00").getTime();
-      const FOTOS_GALERIA = [
-        "migueleluana1.jpg",
-        "migueleluana2.jpg",
-        "migueleluana3.jpg",
-        "migueleluana4.jpg", // Pode duplicar ou adicionar mais fotos
-      ];
+        // CONFIGURAÇÕES
+        const DATA_CASAMENTO = new Date("July 26, 2026 14:00:00").getTime();
+        const FOTOS_GALERIA = [
+            "migueleluana1.jpg",
+            "migueleluana2.jpg",
+            "migueleluana3.jpg",
+            "migueleluana2.jpg", // Pode duplicar ou adicionar mais fotos
+        ];
 
-      // FUNÇÕES PRINCIPAIS
-      function obterNomeConvidado() {
-        const parametrosURL = new URLSearchParams(window.location.search);
-        const nome = parametrosURL.get("name");
-        return nome ? nome : "Convidado(a) Especial";
-      }
-
-      function scrollParaProximaSecao() {
-        const secoes = document.querySelectorAll("section");
-        const scrollAtual = window.scrollY;
-
-        for (let i = 0; i < secoes.length; i++) {
-          const secao = secoes[i];
-          const topoSecao = secao.offsetTop;
-
-          if (topoSecao > scrollAtual + 100) {
-            window.scrollTo({
-              top: topoSecao,
-              behavior: "smooth",
-            });
-            break;
-          }
-        }
-      }
-
-      function atualizarContador() {
-        const agora = new Date().getTime();
-        const tempoRestante = DATA_CASAMENTO - agora;
-
-        if (tempoRestante < 0) {
-          document.getElementById("dias-contador").textContent = "00";
-          document.getElementById("horas-contador").textContent = "00";
-          document.getElementById("minutos-contador").textContent = "00";
-          document.getElementById("segundos-contador").textContent = "00";
-          return;
+        // FUNÇÕES PRINCIPAIS
+        function obterNomeConvidado() {
+            const parametrosURL = new URLSearchParams(window.location.search);
+            const nome = parametrosURL.get("name");
+            return nome ? nome : "Convidado(a) Especial";
         }
 
-        const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
-        const horas = Math.floor(
-          (tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutos = Math.floor(
-          (tempoRestante % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+        function scrollParaProximaSecao() {
+            const secoes = document.querySelectorAll("section");
+            const scrollAtual = window.scrollY;
 
-        document.getElementById("dias-contador").textContent = dias
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("horas-contador").textContent = horas
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("minutos-contador").textContent = minutos
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("segundos-contador").textContent = segundos
-          .toString()
-          .padStart(2, "0");
-      }
+            for (let i = 0; i < secoes.length; i++) {
+                const secao = secoes[i];
+                const topoSecao = secao.offsetTop;
 
-      function configurarMusica() {
-        const audio = document.getElementById("musica-fundo");
-        const botaoMusica = document.getElementById("botao-musica");
-        const iconeBotao = botaoMusica.querySelector("i");
+                if (topoSecao > scrollAtual + 100) {
+                    window.scrollTo({
+                        top: topoSecao,
+                        behavior: "smooth",
+                    });
+                    break;
+                }
+            }
+        }
 
-        // Estratégia para autoplay
-        audio.muted = true;
+        function atualizarContador() {
+            const agora = new Date().getTime();
+            const tempoRestante = DATA_CASAMENTO - agora;
 
-        const tentarReproduzir = () => {
-          audio
-            .play()
-            .then(() => {
-              audio.muted = false;
-              botaoMusica.style.display = "none";
-            })
-            .catch(() => {
-              // Mostrar botão se autoplay falhar
-              botaoMusica.style.display = "flex";
+            if (tempoRestante < 0) {
+                document.getElementById("dias-contador").textContent = "00";
+                document.getElementById("horas-contador").textContent = "00";
+                document.getElementById("minutos-contador").textContent = "00";
+                document.getElementById("segundos-contador").textContent = "00";
+                return;
+            }
+
+            const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+            const horas = Math.floor(
+                (tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutos = Math.floor(
+                (tempoRestante % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
+            document.getElementById("dias-contador").textContent = dias
+                .toString()
+                .padStart(2, "0");
+            document.getElementById("horas-contador").textContent = horas
+                .toString()
+                .padStart(2, "0");
+            document.getElementById("minutos-contador").textContent = minutos
+                .toString()
+                .padStart(2, "0");
+            document.getElementById("segundos-contador").textContent = segundos
+                .toString()
+                .padStart(2, "0");
+        }
+
+        // MÚSICA AUTOMÁTICA (SEM BOTÃO)
+        function configurarMusica() {
+            const audio = document.getElementById("musica-fundo");
+            
+            // Estratégia para autoplay inteligente
+            audio.muted = true; // Começa mudo para driblar bloqueio do navegador
+            
+            // Tenta tocar quando a página carrega
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Sucesso! Agora tira o mudo
+                    audio.muted = false;
+                    console.log('Música iniciada automaticamente');
+                }).catch(() => {
+                    // Se falhar, programa para tocar no primeiro clique
+                    console.log('Aguardando interação do usuário...');
+                    
+                    // Função que será chamada no primeiro clique
+                    const iniciarNoClique = () => {
+                        audio.muted = false;
+                        audio.play().then(() => {
+                            console.log('Música iniciada após clique do usuário');
+                        }).catch(e => {
+                            console.log('Ainda não foi possível tocar:', e);
+                        });
+                        
+                        // Remove o listener depois de usar
+                        document.removeEventListener('click', iniciarNoClique);
+                        document.removeEventListener('scroll', iniciarNoClique);
+                        document.removeEventListener('touchstart', iniciarNoClique);
+                    };
+                    
+                    // Adiciona listeners para vários tipos de interação
+                    document.addEventListener('click', iniciarNoClique, { once: true });
+                    document.addEventListener('scroll', iniciarNoClique, { once: true });
+                    document.addEventListener('touchstart', iniciarNoClique, { once: true });
+                });
+            }
+        }
+
+        function configurarGaleria() {
+            const containerGaleria = document.getElementById("galeria-container");
+            const modal = document.getElementById("modal-galeria");
+            const modalImagem = document.getElementById("modal-imagem");
+            const fecharModal = document.querySelector(".fechar-modal");
+
+            FOTOS_GALERIA.forEach((fotoSrc) => {
+                const itemGaleria = document.createElement("div");
+                itemGaleria.className = "galeria-item";
+
+                const img = document.createElement("img");
+                img.src = fotoSrc;
+                img.alt = "Foto do casal";
+                img.className = "galeria-imagem";
+
+                itemGaleria.appendChild(img);
+                containerGaleria.appendChild(itemGaleria);
+
+                // Abrir modal ao clicar
+                itemGaleria.addEventListener("click", () => {
+                    modalImagem.src = fotoSrc;
+                    modal.style.display = "flex";
+                });
             });
+
+            // Fechar modal
+            fecharModal.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            modal.addEventListener("click", (e) => {
+                if (e.target.id === "modal-galeria") {
+                    modal.style.display = "none";
+                }
+            });
+
+            // Fechar com ESC
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && modal.style.display === "flex") {
+                    modal.style.display = "none";
+                }
+            });
+        }
+
+        function configurarAnimações() {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px -50px 0px",
+                }
+            );
+
+            // Observar todas as seções
+            document.querySelectorAll("section").forEach((secao) => {
+                secao.style.opacity = "0";
+                secao.style.transform = "translateY(20px)";
+                secao.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+                observer.observe(secao);
+            });
+        }
+
+        // INICIALIZAÇÃO
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Convite carregado!");
+
+            // Saudação personalizada
+            document.getElementById(
+                "nome-convidado"
+            ).textContent = `Caro(a), ${obterNomeConvidado()}`;
+
+            // Configurar seta de scroll
+            document
+                .getElementById("scroll-indicator")
+                .addEventListener("click", scrollParaProximaSecao);
+
+            // Configurar música
+            configurarMusica();
+
+            // Configurar galeria
+            configurarGaleria();
+
+            // Configurar contador
+            atualizarContador();
+            setInterval(atualizarContador, 1000);
+
+            // Configurar animações
+            configurarAnimações();
+
+            // Configurar botões do mapa
+            document.querySelectorAll(".botao-mapa").forEach((botao) => {
+                botao.addEventListener("click", (e) => {
+                    e.stopPropagation(); // Prevenir propagação
+                });
+            });
+
+            // Log de inicialização completa
+            setTimeout(() => {
+                console.log("Convite totalmente carregado e funcional!");
+            }, 1000);
+        });
+
+        // Função para impressão/depuração
+        window.debugConvite = function () {
+            console.log("=== DEBUG CONVITE ===");
+            console.log("Data do casamento:", new Date(DATA_CASAMENTO));
+            console.log("Fotos na galeria:", FOTOS_GALERIA.length);
+            console.log("Nome do convidado:", obterNomeConvidado());
+            console.log(
+                "Música configurada:",
+                document.getElementById("musica-fundo").src
+            );
+            console.log("====================");
         };
-
-        // Tentar reproduzir após interação do usuário
-        document.addEventListener(
-          "click",
-          function iniciarMusica() {
-            tentarReproduzir();
-            document.removeEventListener("click", iniciarMusica);
-          },
-          { once: true }
-        );
-
-        // Controle manual
-        botaoMusica.addEventListener("click", () => {
-          if (audio.paused) {
-            audio.play();
-            iconeBotao.className = "fas fa-pause";
-          } else {
-            audio.pause();
-            iconeBotao.className = "fas fa-play";
-          }
-        });
-
-        // Atualizar ícone quando música terminar
-        audio.addEventListener("ended", () => {
-          iconeBotao.className = "fas fa-play";
-        });
-      }
-
-      function configurarGaleria() {
-        const containerGaleria = document.getElementById("galeria-container");
-        const modal = document.getElementById("modal-galeria");
-        const modalImagem = document.getElementById("modal-imagem");
-        const fecharModal = document.querySelector(".fechar-modal");
-
-        FOTOS_GALERIA.forEach((fotoSrc) => {
-          const itemGaleria = document.createElement("div");
-          itemGaleria.className = "galeria-item";
-
-          const img = document.createElement("img");
-          img.src = fotoSrc;
-          img.alt = "Foto do casal";
-          img.className = "galeria-imagem";
-
-          itemGaleria.appendChild(img);
-          containerGaleria.appendChild(itemGaleria);
-
-          // Abrir modal ao clicar
-          itemGaleria.addEventListener("click", () => {
-            modalImagem.src = fotoSrc;
-            modal.style.display = "flex";
-          });
-        });
-
-        // Fechar modal
-        fecharModal.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
-
-        modal.addEventListener("click", (e) => {
-          if (e.target.id === "modal-galeria") {
-            modal.style.display = "none";
-          }
-        });
-
-        // Fechar com ESC
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && modal.style.display === "flex") {
-            modal.style.display = "none";
-          }
-        });
-      }
-
-      function configurarAnimações() {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-              }
-            });
-          },
-          {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px",
-          }
-        );
-
-        // Observar todas as seções
-        document.querySelectorAll("section").forEach((secao) => {
-          secao.style.opacity = "0";
-          secao.style.transform = "translateY(20px)";
-          secao.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-          observer.observe(secao);
-        });
-      }
-
-      // INICIALIZAÇÃO
-      document.addEventListener("DOMContentLoaded", function () {
-        console.log("Convite carregado!");
-
-        // Saudação personalizada
-        document.getElementById(
-          "nome-convidado"
-        ).textContent = `Caro(a), ${obterNomeConvidado()}`;
-
-        // Configurar seta de scroll
-        document
-          .getElementById("scroll-indicator")
-          .addEventListener("click", scrollParaProximaSecao);
-
-        // Configurar música
-        configurarMusica();
-
-        // Configurar galeria
-        configurarGaleria();
-
-        // Configurar contador
-        atualizarContador();
-        setInterval(atualizarContador, 1000);
-
-        // Configurar animações
-        configurarAnimações();
-
-        // Configurar botões do mapa
-        document.querySelectorAll(".botao-mapa").forEach((botao) => {
-          botao.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevenir propagação
-          });
-        });
-
-        // Log de inicialização completa
-        setTimeout(() => {
-          console.log("Convite totalmente carregado e funcional!");
-        }, 1000);
-      });
-
-      // Função para impressão/depuração
-      window.debugConvite = function () {
-        console.log("=== DEBUG CONVITE ===");
-        console.log("Data do casamento:", new Date(DATA_CASAMENTO));
-        console.log("Fotos na galeria:", FOTOS_GALERIA.length);
-        console.log("Nome do convidado:", obterNomeConvidado());
-        console.log(
-          "Música configurada:",
-          document.getElementById("musica-fundo").src
-        );
-        console.log("====================");
-      };
     </script>
-  </body>
+</body>
 </html>

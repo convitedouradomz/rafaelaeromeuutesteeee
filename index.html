@@ -566,7 +566,7 @@
         color: var(--dourado);
         filter: drop-shadow(0 5px 15px rgba(201, 166, 107, 0.4));
       }
-    <!-- GALERIA DE FOTOS -->
+      <!-- GALERIA DE FOTOS -->
     <section class="section" style="background: var(--branco);">
         <div class="container">
             <h2 class="titulo-secao">
@@ -698,6 +698,7 @@
       .rsvp-botao.telefone {
         background: linear-gradient(135deg, #4285f4, #0d47a1);
       }
+
       /* ========== PRESENTES ========== */
       .presentes-section {
         background: var(--branco);
@@ -1027,55 +1028,148 @@
       }
     </style>
   </head>
-    <!-- MODAL DE CONFIRMAÇÃO -->
-    <div id="modal-confirmacao" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; animation: fadeIn 0.3s;">
-        <div style="background: white; padding: 50px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: fadeInUp 0.5s;">
-            <button id="fechar-modal" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.8rem; color: var(--marrom-claro); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.3s;">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div style="background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro)); color: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 3rem;">
-                <i class="fas fa-heart"></i>
-            </div>
-            
-            <h3 style="color: var(--marrom); margin-bottom: 20px; font-size: 1.8rem;">Mensagem Enviada!</h3>
-            
-            <p style="color: var(--marrom-medio); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
-                Obrigado pela sua mensagem especial! <br>
-                Os noivos vão adorar receber o seu carinho.
-            </p>
-            
-            <button id="ok-modal" style="background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro)); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto; transition: all 0.3s;">
-                <i class="fas fa-check"></i> OK
-            </button>
-        </div>
-    </div>
+  <!-- MODAL DE CONFIRMAÇÃO -->
+  <div
+    id="modal-confirmacao"
+    style="
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s;
+    "
+  >
+    <div
+      style="
+        background: white;
+        padding: 50px;
+        border-radius: 20px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 0.5s;
+      "
+    >
+      <button
+        id="fechar-modal"
+        style="
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: none;
+          border: none;
+          font-size: 1.8rem;
+          color: var(--marrom-claro);
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: background 0.3s;
+        "
+      >
+        <i class="fas fa-times"></i>
+      </button>
 
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .foto-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        #fechar-modal:hover {
-            background: var(--creme);
-        }
-        
-        #ok-modal:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
-        }
-    </style>
+      <div
+        style="
+          background: linear-gradient(
+            135deg,
+            var(--dourado),
+            var(--dourado-escuro)
+          );
+          color: white;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 30px;
+          font-size: 3rem;
+        "
+      >
+        <i class="fas fa-heart"></i>
+      </div>
+
+      <h3 style="color: var(--marrom); margin-bottom: 20px; font-size: 1.8rem">
+        Mensagem Enviada!
+      </h3>
+
+      <p
+        style="
+          color: var(--marrom-medio);
+          margin-bottom: 30px;
+          font-size: 1.1rem;
+          line-height: 1.6;
+        "
+      >
+        Obrigado pela sua mensagem especial! <br />
+        Os noivos vão adorar receber o seu carinho.
+      </p>
+
+      <button
+        id="ok-modal"
+        style="
+          background: linear-gradient(
+            135deg,
+            var(--dourado),
+            var(--dourado-escuro)
+          );
+          color: white;
+          border: none;
+          padding: 15px 40px;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin: 0 auto;
+          transition: all 0.3s;
+        "
+      >
+        <i class="fas fa-check"></i> OK
+      </button>
+    </div>
+  </div>
+
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .foto-item:hover img {
+      transform: scale(1.1);
+    }
+
+    #fechar-modal:hover {
+      background: var(--creme);
+    }
+
+    #ok-modal:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
+    }
+  </style>
   <body>
     <!-- MÚSICA DE FUNDO -->
     <audio id="musica-fundo" loop preload="auto">
@@ -1656,59 +1750,177 @@
       </div>
     </section>
     <!-- MURAL DE MENSAGENS -->
-    <section class="section" style="background: linear-gradient(135deg, #f9f5f0 0%, var(--creme) 100%);">
-        <div class="container">
-            <h2 class="titulo-secao">
-                <i class="fas fa-comment-heart"></i>
-                Deixe sua Mensagem
-                <i class="fas fa-feather-alt"></i>
-            </h2>
-            
-            <p style="text-align: center; font-size: 1.3rem; max-width: 700px; margin: 0 auto 40px; color: var(--marrom);">
-                <i class="fas fa-quote-left" style="color: var(--dourado);"></i>
-                Compartilhe connosco os seus votos e mensagens de felicidade
-                <i class="fas fa-quote-right" style="color: var(--dourado);"></i>
-            </p>
-            
-            <!-- Formulário -->
-            <div style="max-width: 600px; margin: 0 auto 50px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(93, 64, 55, 0.08);">
-                <div style="display: flex; gap: 15px; margin-bottom: 25px;">
-                    <input type="text" id="nome-mensagem" placeholder="Seu nome (opcional)" 
-                           style="flex: 1; padding: 15px; border: 2px solid var(--creme); border-radius: 10px; font-size: 1.1rem; font-family: inherit;">
-                    
-                    <select id="relacao-mensagem" style="padding: 15px; border: 2px solid var(--creme); border-radius: 10px; font-size: 1.1rem; font-family: inherit; min-width: 150px;">
-                        <option value="">Sua relação...</option>
-                        <option value="familiar">Familiar</option>
-                        <option value="amigo">Amigo(a)</option>
-                        <option value="colega">Colega</option>
-                    </select>
-                </div>
-                
-                <textarea id="texto-mensagem" placeholder="Escreva aqui a sua mensagem especial para os noivos..." 
-                          rows="4" style="width: 100%; padding: 20px; border: 2px solid var(--creme); border-radius: 10px; font-size: 1.2rem; margin-bottom: 25px; resize: vertical; font-family: inherit;"></textarea>
-                
-                <button id="enviar-mensagem" style="background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro)); color: white; border: none; padding: 18px 50px; border-radius: 50px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 auto; transition: all 0.3s;">
-                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
-                </button>
-            </div>
-            
-            <!-- Mural onde as mensagens aparecem -->
-            <div id="mural-mensagens" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 40px;">
-                <!-- Mensagens aparecerão aqui -->
-                <div class="mensagem-exemplo" style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border-left: 5px solid var(--dourado); text-align: left; opacity: 0.7; animation: fadeIn 1s ease-out;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
-                        <strong style="color: var(--marrom); font-size: 1.1rem;">Exemplo:</strong>
-                        <span style="background: var(--creme); color: var(--marrom-claro); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">Familiar</span>
-                    </div>
-                    <p style="font-style: italic; color: var(--marrom); line-height: 1.6;">"Que Deus abençoe esta união com muito amor e felicidade para toda a vida!"</p>
-                    <div style="text-align: right; margin-top: 15px;">
-                        <small style="color: var(--marrom-claro);">
-                            <i class="far fa-clock"></i> Hoje
-                        </small>
-                    </div>
-                </div>
-            </div>
+    <section
+      class="section"
+      style="background: linear-gradient(135deg, #f9f5f0 0%, var(--creme) 100%)"
+    >
+      <div class="container">
+        <h2 class="titulo-secao">
+          <i class="fas fa-comment-heart"></i>
+          Deixe sua Mensagem
+          <i class="fas fa-feather-alt"></i>
+        </h2>
+
+        <p
+          style="
+            text-align: center;
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--marrom);
+          "
+        >
+          <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
+          Compartilhe connosco os seus votos e mensagens de felicidade
+          <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
+        </p>
+
+        <!-- Formulário -->
+        <div
+          style="
+            max-width: 600px;
+            margin: 0 auto 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(93, 64, 55, 0.08);
+          "
+        >
+          <div style="display: flex; gap: 15px; margin-bottom: 25px">
+            <input
+              type="text"
+              id="nome-mensagem"
+              placeholder="Seu nome (opcional)"
+              style="
+                flex: 1;
+                padding: 15px;
+                border: 2px solid var(--creme);
+                border-radius: 10px;
+                font-size: 1.1rem;
+                font-family: inherit;
+              "
+            />
+
+            <select
+              id="relacao-mensagem"
+              style="
+                padding: 15px;
+                border: 2px solid var(--creme);
+                border-radius: 10px;
+                font-size: 1.1rem;
+                font-family: inherit;
+                min-width: 150px;
+              "
+            >
+              <option value="">Sua relação...</option>
+              <option value="familiar">Familiar</option>
+              <option value="amigo">Amigo(a)</option>
+              <option value="colega">Colega</option>
+            </select>
+          </div>
+
+          <textarea
+            id="texto-mensagem"
+            placeholder="Escreva aqui a sua mensagem especial para os noivos..."
+            rows="4"
+            style="
+              width: 100%;
+              padding: 20px;
+              border: 2px solid var(--creme);
+              border-radius: 10px;
+              font-size: 1.2rem;
+              margin-bottom: 25px;
+              resize: vertical;
+              font-family: inherit;
+            "
+          ></textarea>
+
+          <button
+            id="enviar-mensagem"
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--dourado),
+                var(--dourado-escuro)
+              );
+              color: white;
+              border: none;
+              padding: 18px 50px;
+              border-radius: 50px;
+              font-size: 1.2rem;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+              margin: 0 auto;
+              transition: all 0.3s;
+            "
+          >
+            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+          </button>
         </div>
+
+        <!-- Mural onde as mensagens aparecem -->
+        <div
+          id="mural-mensagens"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+          "
+        >
+          <!-- Mensagens aparecerão aqui -->
+          <div
+            class="mensagem-exemplo"
+            style="
+              background: white;
+              padding: 25px;
+              border-radius: 15px;
+              box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+              border-left: 5px solid var(--dourado);
+              text-align: left;
+              opacity: 0.7;
+              animation: fadeIn 1s ease-out;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                align-items: center;
+              "
+            >
+              <strong style="color: var(--marrom); font-size: 1.1rem"
+                >Exemplo:</strong
+              >
+              <span
+                style="
+                  background: var(--creme);
+                  color: var(--marrom-claro);
+                  padding: 5px 15px;
+                  border-radius: 20px;
+                  font-size: 0.9rem;
+                "
+                >Familiar</span
+              >
+            </div>
+            <p
+              style="font-style: italic; color: var(--marrom); line-height: 1.6"
+            >
+              "Que Deus abençoe esta união com muito amor e felicidade para toda
+              a vida!"
+            </p>
+            <div style="text-align: right; margin-top: 15px">
+              <small style="color: var(--marrom-claro)">
+                <i class="far fa-clock"></i> Hoje
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- RODAPÉ -->
@@ -1740,15 +1952,25 @@
             </div>
             <div class="contato-item">
               <i class="fas fa-envelope"></i>
-              <p>rafaelamacuacua52@gmail.com<br />convitedouradomz@hotmail.com</p>
+              <p>
+                rafaelamacuacua52@gmail.com<br />convitedouradomz@hotmail.com
+              </p>
             </div>
           </div>
 
           <div class="redes-sociais">
-            <a href="https://www.instagram.com/convitedouradomz?igsh=ejI1OHlndzRhbmd1" class="rede-social" target="_blank">
+            <a
+              href="https://www.instagram.com/convitedouradomz?igsh=ejI1OHlndzRhbmd1"
+              class="rede-social"
+              target="_blank"
+            >
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.facebook.com/share/1C5nwxeomx/?mibextid=wwXIfr" class="rede-social" target="_blank">
+            <a
+              href="https://www.facebook.com/share/1C5nwxeomx/?mibextid=wwXIfr"
+              class="rede-social"
+              target="_blank"
+            >
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="convitedouradomz@hotmail.com" class="rede-social">
@@ -2027,143 +2249,6 @@
 
       // Exemplo de uso (descomente se quiser):
       // efeitoDigitacao(document.getElementById('nome-convidado'), 'Nome do Convidado');
-          // ========== SISTEMA DE MENSAGENS ==========
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('enviar-mensagem');
-        const mural = document.getElementById('mural-mensagens');
-        const modal = document.getElementById('modal-confirmacao');
-        const fecharModal = document.getElementById('fechar-modal');
-        const okModal = document.getElementById('ok-modal');
-        
-        // Carregar mensagens salvas
-        let mensagens = JSON.parse(localStorage.getItem('mensagensNoivos')) || [];
-        
-        // Mostrar mensagens existentes
-        function mostrarMensagens() {
-            const exemplo = mural.querySelector('.mensagem-exemplo');
-            if (exemplo && mensagens.length > 0) {
-                exemplo.remove();
-            }
-            
-            // Mostrar últimas 6 mensagens
-            const ultimasMensagens = mensagens.slice(-6);
-            
-            ultimasMensagens.forEach(msg => {
-                const divMsg = document.createElement('div');
-                divMsg.className = 'mensagem-item';
-                divMsg.style.cssText = 'background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border-left: 5px solid var(--dourado); text-align: left; animation: fadeIn 0.5s ease-out;';
-                
-                // Formatar relação
-                let relacaoTexto = 'Convidado';
-                if (msg.relacao === 'familiar') relacaoTexto = 'Familiar';
-                if (msg.relacao === 'amigo') relacaoTexto = 'Amigo(a)';
-                if (msg.relacao === 'colega') relacaoTexto = 'Colega';
-                
-                // Formatar data
-                const dataMsg = new Date(msg.data);
-                const hoje = new Date();
-                const diferencaDias = Math.floor((hoje - dataMsg) / (1000 * 60 * 60 * 24));
-                
-                let dataTexto = 'Hoje';
-                if (diferencaDias === 1) dataTexto = 'Ontem';
-                if (diferencaDias > 1) dataTexto = `Há ${diferencaDias} dias`;
-                
-                divMsg.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
-                        <strong style="color: var(--marrom); font-size: 1.1rem;">${msg.nome || 'Anónimo'}</strong>
-                        <span style="background: var(--creme); color: var(--marrom-claro); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">${relacaoTexto}</span>
-                    </div>
-                    <p style="font-style: italic; color: var(--marrom); line-height: 1.6;">"${msg.texto}"</p>
-                    <div style="text-align: right; margin-top: 15px;">
-                        <small style="color: var(--marrom-claro);">
-                            <i class="far fa-clock"></i> ${dataTexto}
-                        </small>
-                    </div>
-                `;
-                
-                mural.prepend(divMsg);
-            });
-        }
-        
-        // Enviar nova mensagem
-        if (form) {
-            form.addEventListener('click', function() {
-                const nome = document.getElementById('nome-mensagem').value.trim();
-                const relacao = document.getElementById('relacao-mensagem').value;
-                const texto = document.getElementById('texto-mensagem').value.trim();
-                
-                if (!texto) {
-                    alert('Por favor, escreva uma mensagem antes de enviar.');
-                    return;
-                }
-                
-                // Criar nova mensagem
-                const novaMensagem = {
-                    nome: nome || 'Anónimo',
-                    relacao: relacao || 'convidado',
-                    texto: texto,
-                    data: new Date().toISOString()
-                };
-                
-                // Adicionar à lista
-                mensagens.push(novaMensagem);
-                
-                // Salvar no localStorage
-                localStorage.setItem('mensagensNoivos', JSON.stringify(mensagens));
-                
-                // Atualizar mural
-                mostrarMensagens();
-                
-                // Limpar formulário
-                document.getElementById('nome-mensagem').value = '';
-                document.getElementById('relacao-mensagem').value = '';
-                document.getElementById('texto-mensagem').value = '';
-                
-                // Mostrar modal de confirmação
-                if (modal) {
-                    modal.style.display = 'flex';
-                }
-            });
-        }
-        
-        // Fechar modal
-        if (fecharModal) {
-            fecharModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-        }
-        
-        if (okModal) {
-            okModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-        }
-        
-        // Fechar modal ao clicar fora
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
-        
-        // Mostrar mensagens ao carregar
-        mostrarMensagens();
-        
-        // ========== GALERIA ==========
-        // Efeito hover nas fotos
-        document.querySelectorAll('.foto-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-                this.style.transition = 'transform 0.3s';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    });
     </script>
   </body>
 </html>

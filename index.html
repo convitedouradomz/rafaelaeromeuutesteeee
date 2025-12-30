@@ -107,6 +107,17 @@
         }
       }
 
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       /* ========== ELEMENTOS GERAIS ========== */
       h1,
       h2,
@@ -192,13 +203,13 @@
 
       .nomes-noivos {
         font-family: "Great Vibes", cursive;
-        font-size: 6.5rem; /* Um pouco maior */
+        font-size: 4.8rem;
         margin-bottom: 20px;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
         text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
         animation: fadeIn 1.8s ease-out;
         line-height: 1.1;
-        white-space: nowrap; /* Garante que fique em uma linha */
+        white-space: nowrap;
       }
 
       .data-casamento {
@@ -214,7 +225,7 @@
       .frase-romantica {
         font-size: 1.5rem;
         max-width: 800px;
-        margin: 0 auto 60px; /* Mais espaço abaixo */
+        margin: 0 auto 60px;
         line-height: 1.8;
         font-style: italic;
         animation: fadeIn 1.8s ease-out 0.6s both;
@@ -251,22 +262,22 @@
         box-shadow: 0 10px 30px rgba(201, 166, 107, 0.3);
       }
 
-      .seta-abrir-convite::after {
-        content: "Abrir Convite";
+      .texto-seta {
         position: absolute;
-        bottom: -35px;
+        bottom: -30px;
         left: 50%;
         transform: translateX(-50%);
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.9);
         white-space: nowrap;
         font-family: "Cormorant Garamond", serif;
         letter-spacing: 1px;
-        opacity: 0;
+        opacity: 0.8;
         transition: opacity 0.3s;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
       }
 
-      .seta-abrir-convite:hover::after {
+      .seta-abrir-convite:hover .texto-seta {
         opacity: 1;
       }
 
@@ -279,7 +290,7 @@
         font-size: 2rem;
         animation: float 2s ease-in-out infinite;
         cursor: pointer;
-        display: none; /* Só aparece após abrir o convite */
+        display: none;
       }
 
       /* ========== TEXTO DO CONVITE ========== */
@@ -322,9 +333,10 @@
         text-align: center;
         margin-top: 40px;
         font-family: "Great Vibes", cursive;
-        font-size: 2.8rem; /* Um pouco maior */
+        font-size: 2.3rem;
         color: var(--dourado);
         animation: fadeIn 1.5s ease-out 0.5s both;
+        white-space: nowrap;
       }
 
       /* ========== CONTADOR REGRESSIVO ELEGANTE ========== */
@@ -341,7 +353,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a66b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a66b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
       }
 
       .contador-container {
@@ -458,12 +470,7 @@
         transform: translateX(-50%);
         width: 100px;
         height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--dourado),
-          transparent
-        );
+        background: linear-gradient(90deg, transparent, var(--dourado), transparent);
       }
 
       .frase-convite {
@@ -477,7 +484,7 @@
 
       .nomes-convidados {
         font-family: "Dancing Script", cursive;
-        font-size: 2.2rem; /* Um pouco maior */
+        font-size: 2.2rem;
         color: var(--dourado-escuro);
         margin: 40px 0;
         padding: 20px 0;
@@ -525,16 +532,16 @@
       .noivo-card {
         text-align: center;
         max-width: 350px;
-        animation-duration: 1.5s !important; /* Transições mais lentas */
+        animation-duration: 1.5s !important;
         animation-timing-function: ease-out !important;
       }
 
       .noivo-card.noiva {
-        animation: slideInLeft 1.5s ease-out; /* Mais lento */
+        animation: slideInLeft 1.5s ease-out;
       }
 
       .noivo-card.noivo {
-        animation: slideInRight 1.5s ease-out; /* Mais lento */
+        animation: slideInRight 1.5s ease-out;
       }
 
       .foto-container {
@@ -550,11 +557,11 @@
         object-fit: cover;
         border: 10px solid var(--creme);
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        transition: transform 0.7s ease, filter 0.7s ease; /* Mais lento */
+        transition: transform 0.7s ease, filter 0.7s ease;
       }
 
       .foto-noivo:hover {
-        transform: scale(1.08); /* Um pouco mais de zoom */
+        transform: scale(1.08);
         filter: brightness(1.1);
       }
 
@@ -646,25 +653,17 @@
         border-radius: 20px;
         padding: 40px 30px;
         box-shadow: 0 20px 40px rgba(93, 64, 55, 0.08);
-        transition: all 0.6s ease; /* Mais lento */
+        transition: all 0.6s ease;
         border: 2px solid transparent;
         position: relative;
         overflow: hidden;
         animation: fadeIn 1.2s ease-out;
       }
 
-      .evento-card:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .evento-card:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .evento-card:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .evento-card:nth-child(4) {
-        animation-delay: 0.4s;
-      }
+      .evento-card:nth-child(1) { animation-delay: 0.1s; }
+      .evento-card:nth-child(2) { animation-delay: 0.2s; }
+      .evento-card:nth-child(3) { animation-delay: 0.3s; }
+      .evento-card:nth-child(4) { animation-delay: 0.4s; }
 
       .evento-card::before {
         content: "";
@@ -673,11 +672,7 @@
         left: 0;
         right: 0;
         height: 5px;
-        background: linear-gradient(
-          90deg,
-          var(--dourado),
-          var(--dourado-escuro)
-        );
+        background: linear-gradient(90deg, var(--dourado), var(--dourado-escuro));
         transition: height 0.3s;
       }
 
@@ -701,11 +696,7 @@
       .evento-hora .icone {
         width: 70px;
         height: 70px;
-        background: linear-gradient(
-          135deg,
-          var(--dourado),
-          var(--dourado-escuro)
-        );
+        background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro));
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -761,15 +752,15 @@
         border-radius: 30px;
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.5s ease; /* Mais lento */
+        transition: all 0.5s ease;
         margin-top: 15px;
       }
 
       .botao-mapa:hover {
         background: var(--dourado);
         color: white;
-        transform: translateY(-5px) scale(1.05); /* Mais pronunciado */
-        box-shadow: 0 15px 30px rgba(201, 166, 107, 0.4); /* Mais sombra */
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(201, 166, 107, 0.4);
       }
 
       /* Destaque para cerimônia principal */
@@ -797,34 +788,26 @@
         position: relative;
         overflow: hidden;
         border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         cursor: pointer;
         height: 300px;
         animation: fadeIn 1.2s ease-out;
       }
 
-      .foto-item:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .foto-item:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .foto-item:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .foto-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
+      .foto-item:nth-child(1) { animation-delay: 0.1s; }
+      .foto-item:nth-child(2) { animation-delay: 0.2s; }
+      .foto-item:nth-child(3) { animation-delay: 0.3s; }
+      .foto-item:nth-child(4) { animation-delay: 0.4s; }
 
       .foto-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.7s ease; /* Mais lento */
+        transition: transform 0.7s ease;
       }
 
       .foto-item:hover img {
-        transform: scale(1.12); /* Um pouco mais de zoom */
+        transform: scale(1.12);
       }
 
       .foto-item .legenda {
@@ -832,7 +815,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
         color: white;
         padding: 20px;
         transform: translateY(100%);
@@ -865,22 +848,16 @@
         border-radius: 20px;
         text-decoration: none;
         color: white;
-        transition: all 0.6s ease; /* Mais lento */
+        transition: all 0.6s ease;
         position: relative;
         overflow: hidden;
         z-index: 1;
         animation: fadeIn 1.2s ease-out;
       }
 
-      .rsvp-botao:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .rsvp-botao:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .rsvp-botao:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+      .rsvp-botao:nth-child(1) { animation-delay: 0.1s; }
+      .rsvp-botao:nth-child(2) { animation-delay: 0.2s; }
+      .rsvp-botao:nth-child(3) { animation-delay: 0.3s; }
 
       .rsvp-botao::before {
         content: "";
@@ -889,17 +866,13 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.1),
-          rgba(255, 255, 255, 0)
-        );
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
         z-index: -1;
       }
 
       .rsvp-botao:hover {
-        transform: translateY(-12px) scale(1.04); /* Mais pronunciado */
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); /* Mais sombra */
+        transform: translateY(-12px) scale(1.04);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
       }
 
       .rsvp-botao .icone {
@@ -959,38 +932,28 @@
         padding: 40px 30px;
         border-radius: 20px;
         text-align: center;
-        transition: all 0.6s ease; /* Mais lento */
+        transition: all 0.6s ease;
         border: 2px solid transparent;
         position: relative;
         overflow: hidden;
         animation: fadeIn 1.2s ease-out;
       }
 
-      .presente-card:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .presente-card:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .presente-card:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+      .presente-card:nth-child(1) { animation-delay: 0.1s; }
+      .presente-card:nth-child(2) { animation-delay: 0.2s; }
+      .presente-card:nth-child(3) { animation-delay: 0.3s; }
 
       .presente-card:hover {
-        transform: translateY(-12px); /* Mais pronunciado */
+        transform: translateY(-12px);
         border-color: var(--dourado);
-        box-shadow: 0 25px 50px rgba(201, 166, 107, 0.2); /* Mais sombra */
+        box-shadow: 0 25px 50px rgba(201, 166, 107, 0.2);
       }
 
       .presente-icone {
         width: 80px;
         height: 80px;
         margin: 0 auto 25px;
-        background: linear-gradient(
-          135deg,
-          var(--dourado),
-          var(--dourado-escuro)
-        );
+        background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro));
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1034,11 +997,7 @@
         left: 0;
         right: 0;
         height: 5px;
-        background: linear-gradient(
-          90deg,
-          var(--dourado),
-          var(--dourado-escuro)
-        );
+        background: linear-gradient(90deg, var(--dourado), var(--dourado-escuro));
       }
 
       .rodape-content {
@@ -1068,15 +1027,9 @@
         animation: fadeIn 1.2s ease-out;
       }
 
-      .contato-item:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .contato-item:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .contato-item:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+      .contato-item:nth-child(1) { animation-delay: 0.1s; }
+      .contato-item:nth-child(2) { animation-delay: 0.2s; }
+      .contato-item:nth-child(3) { animation-delay: 0.3s; }
 
       .contato-item i {
         font-size: 1.5rem;
@@ -1101,25 +1054,19 @@
         justify-content: center;
         color: var(--dourado);
         font-size: 1.3rem;
-        transition: all 0.5s ease; /* Mais lento */
+        transition: all 0.5s ease;
         text-decoration: none;
         animation: fadeIn 1.2s ease-out;
       }
 
-      .rede-social:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .rede-social:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .rede-social:nth-child(3) {
-        animation-delay: 0.3s;
-      }
+      .rede-social:nth-child(1) { animation-delay: 0.1s; }
+      .rede-social:nth-child(2) { animation-delay: 0.2s; }
+      .rede-social:nth-child(3) { animation-delay: 0.3s; }
 
       .rede-social:hover {
         background: var(--dourado);
         color: var(--marrom);
-        transform: translateY(-8px) scale(1.1); /* Mais pronunciado */
+        transform: translateY(-8px) scale(1.1);
       }
 
       .copyright {
@@ -1138,11 +1085,7 @@
         right: 40px;
         width: 60px;
         height: 60px;
-        background: linear-gradient(
-          135deg,
-          var(--dourado),
-          var(--dourado-escuro)
-        );
+        background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro);
         color: white;
         border: none;
         border-radius: 50%;
@@ -1152,13 +1095,13 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0 10px 30px rgba(201, 166, 107, 0.4);
-        transition: all 0.5s ease; /* Mais lento */
+        transition: all 0.5s ease;
         z-index: 1000;
       }
 
       .botao-topo:hover {
-        transform: translateY(-8px) scale(1.1); /* Mais pronunciado */
-        box-shadow: 0 20px 40px rgba(201, 166, 107, 0.6); /* Mais sombra */
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 20px 40px rgba(201, 166, 107, 0.6);
       }
 
       /* ========== RESPONSIVIDADE ========== */
@@ -1170,7 +1113,7 @@
 
       @media (max-width: 992px) {
         .nomes-noivos {
-          font-size: 5rem;
+          font-size: 4rem;
         }
 
         .data-casamento {
@@ -1205,14 +1148,13 @@
         }
 
         .nomes-convidados {
-          font-size: 1.5rem;
-          white-space: normal;
+          font-size: 1.8rem;
         }
       }
 
       @media (max-width: 768px) {
         .nomes-noivos {
-          font-size: 4rem;
+          font-size: 3.2rem;
         }
 
         .data-casamento {
@@ -1275,7 +1217,7 @@
         }
 
         .nomes-convidados {
-          font-size: 1rem;
+          font-size: 1.6rem;
           white-space: normal;
         }
 
@@ -1296,8 +1238,8 @@
 
       @media (max-width: 480px) {
         .nomes-noivos {
-          font-size: 3.2rem;
-          white-space: normal; /* Permite quebra em mobile */
+          font-size: 2.5rem;
+          white-space: nowrap;
         }
 
         .data-casamento {
@@ -1346,7 +1288,7 @@
         }
 
         .nomes-convidados {
-          font-size: 1.2rem;
+          font-size: 1.4rem;
           white-space: normal;
         }
 
@@ -1391,6 +1333,7 @@
       <!-- SETA ELEGANTE PARA ABRIR CONVITE -->
       <div class="seta-abrir-convite" id="abrirConvite">
         <i class="fas fa-chevron-down"></i>
+        <span class="texto-seta">Revelar Convite</span>
       </div>
     </section>
 
@@ -1950,17 +1893,18 @@
                 Presentes práticos para nosso novo lar.
               </p>
               <a
-                href="https://www.listadecasamento.com/exemplo"
-                target="_blank"
+                href="javascript:void(0);"
+                onclick="mostrarListaPresentes()"
                 class="botao-mapa"
                 style="
                   margin-top: 10px;
                   background: var(--dourado);
                   color: white;
                   border: none;
+                  cursor: pointer;
                 "
               >
-                <i class="fas fa-external-link-alt"></i> Acessar Lista
+                <i class="fas fa-external-link-alt"></i> Ver Lista Completa
               </a>
             </div>
 
@@ -2229,7 +2173,14 @@
         <div class="container">
           <div class="rodape-content">
             <div class="logo-rodape">M & H</div>
-            <h2 style="font-size: 2.5rem; margin-bottom: 10px; color: white">
+            <h2
+              style="
+                font-size: 2.2rem;
+                margin-bottom: 10px;
+                color: white;
+                white-space: nowrap;
+              "
+            >
               Manuela & Hugo
             </h2>
             <p
@@ -2350,7 +2301,7 @@
         z-index: 9999;
         justify-content: center;
         align-items: center;
-        animation: fadeIn 0.3s;
+        animation: fadeIn 0.4s;
       "
     >
       <div
@@ -2363,7 +2314,7 @@
           text-align: center;
           position: relative;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-          animation: fadeInUp 0.5s;
+          animation: slideUp 0.5s ease-out;
         "
       >
         <button
@@ -2455,27 +2406,251 @@
       </div>
     </div>
 
-    <style>
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    <!-- MODAL DA LISTA DE PRESENTES -->
+    <div
+      id="modal-lista-presentes"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.4s;
+      "
+    >
+      <div
+        style="
+          background: white;
+          padding: 40px;
+          border-radius: 20px;
+          max-width: 600px;
+          width: 90%;
+          position: relative;
+          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+          animation: slideUp 0.5s ease-out;
+        "
+      >
+        <button
+          onclick="fecharListaPresentes()"
+          style="
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--marrom-claro);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+          "
+        >
+          <i class="fas fa-times"></i>
+        </button>
 
-      #fechar-modal:hover {
-        background: var(--creme);
-      }
+        <div style="text-align: center; margin-bottom: 30px">
+          <div
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--dourado),
+                var(--dourado-escuro)
+              );
+              color: white;
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0 auto 20px;
+              font-size: 2.5rem;
+            "
+          >
+            <i class="fas fa-gift"></i>
+          </div>
+          <h3
+            style="color: var(--marrom); font-size: 1.8rem; margin-bottom: 10px"
+          >
+            Lista de Presentes
+          </h3>
+          <p style="color: var(--marrom-medio); font-size: 1.1rem">
+            Disponibilizamos uma lista preparada com todos os materiais que
+            podem nos presentear.
+          </p>
+        </div>
 
-      #ok-modal:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
-      }
-    </style>
+        <div
+          style="
+            background: var(--creme);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+          "
+        >
+          <!-- LOJA LOUCA AMIGA -->
+          <div
+            style="
+              margin-bottom: 25px;
+              padding-bottom: 25px;
+              border-bottom: 1px solid rgba(201, 166, 107, 0.3);
+            "
+          >
+            <h4
+              style="
+                color: var(--marrom);
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+              "
+            >
+              <i class="fas fa-store" style="color: var(--dourado)"></i>
+              Loja Louca Amiga
+            </h4>
+            <p style="color: var(--marrom-medio); margin-bottom: 15px">
+              Encontre presentes selecionados especialmente para nós.
+            </p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap">
+              <a
+                href="https://share.google/2c2bWArR8rJGmbFxz"
+                target="_blank"
+                style="
+                  flex: 1;
+                  min-width: 140px;
+                  background: var(--dourado);
+                  color: white;
+                  border: none;
+                  padding: 12px 20px;
+                  border-radius: 30px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                  transition: all 0.3s;
+                "
+              >
+                <i class="fas fa-external-link-alt"></i>
+                Ver Lista
+              </a>
+              <a
+                href="tel:+258843380020"
+                style="
+                  flex: 1;
+                  min-width: 140px;
+                  background: #25d366;
+                  color: white;
+                  border: none;
+                  padding: 12px 20px;
+                  border-radius: 30px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                  transition: all 0.3s;
+                "
+              >
+                <i class="fas fa-phone"></i>
+                84 338 0020
+              </a>
+            </div>
+          </div>
+
+          <!-- HOME CENTER -->
+          <div>
+            <h4
+              style="
+                color: var(--marrom);
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+              "
+            >
+              <i class="fas fa-home" style="color: var(--dourado)"></i>
+              Home Center
+            </h4>
+            <p style="color: var(--marrom-medio); margin-bottom: 15px">
+              Materiais para nosso lar, com qualidade e variedade.
+            </p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap">
+              <a
+                href="https://maps.app.goo.gl/KwdKWKguvrEcysPY6"
+                target="_blank"
+                style="
+                  flex: 1;
+                  min-width: 140px;
+                  background: #4285f4;
+                  color: white;
+                  border: none;
+                  padding: 12px 20px;
+                  border-radius: 30px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                  transition: all 0.3s;
+                "
+              >
+                <i class="fas fa-map-marker-alt"></i>
+                Ver Mapa
+              </a>
+              <a
+                href="tel:+258823201560"
+                style="
+                  flex: 1;
+                  min-width: 140px;
+                  background: #25d366;
+                  color: white;
+                  border: none;
+                  padding: 12px 20px;
+                  border-radius: 30px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                  transition: all 0.3s;
+                "
+              >
+                <i class="fas fa-phone"></i>
+                82 320 1560
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <p
+          style="
+            text-align: center;
+            color: var(--marrom-claro);
+            font-style: italic;
+            font-size: 0.95rem;
+          "
+        >
+          <i
+            class="fas fa-heart"
+            style="color: var(--dourado); margin-right: 5px"
+          ></i>
+          Agradecemos pelo carinho e consideração!
+        </p>
+      </div>
+    </div>
 
     <script>
       // ========== INICIALIZAÇÃO ==========
@@ -2783,7 +2958,7 @@
         });
       }
 
-      // ========== MODAL DE CONFIRMAÇÃO ==========
+      // ========== MODAL DE CONFIRMAÇÃO (MENSAGENS) ==========
       function configurarModal() {
         const modal = document.getElementById("modal-confirmacao");
         const fecharModal = document.getElementById("fechar-modal");
@@ -2798,18 +2973,53 @@
         }
 
         // Configurar eventos
-        fecharModal.addEventListener("click", fecharModalFunc);
-        okModal.addEventListener("click", fecharModalFunc);
+        if (fecharModal) {
+          fecharModal.addEventListener("click", fecharModalFunc);
+        }
+        if (okModal) {
+          okModal.addEventListener("click", fecharModalFunc);
+        }
 
         // Fechar ao clicar fora do modal
-        modal.addEventListener("click", function (e) {
-          if (e.target === modal) {
-            fecharModalFunc();
-          }
-        });
+        if (modal) {
+          modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+              fecharModalFunc();
+            }
+          });
+        }
 
-        // Expor função para uso externo
+        // ========== MODAL DA LISTA DE PRESENTES ==========
+        const modalLista = document.getElementById("modal-lista-presentes");
+
+        if (modalLista) {
+          modalLista.addEventListener("click", function (e) {
+            if (e.target === modalLista) {
+              modalLista.style.display = "none";
+            }
+          });
+        }
+
+        // Expor funções para uso externo
         window.mostrarModalConfirmacao = mostrarModal;
+        window.mostrarListaPresentes = mostrarListaPresentes;
+        window.fecharListaPresentes = fecharListaPresentes;
+      }
+
+      // ========== FUNÇÃO PARA MOSTRAR LISTA DE PRESENTES ==========
+      function mostrarListaPresentes() {
+        const modal = document.getElementById("modal-lista-presentes");
+        if (modal) {
+          modal.style.display = "flex";
+        }
+      }
+
+      // ========== FUNÇÃO PARA FECHAR LISTA DE PRESENTES ==========
+      function fecharListaPresentes() {
+        const modal = document.getElementById("modal-lista-presentes");
+        if (modal) {
+          modal.style.display = "none";
+        }
       }
     </script>
   </body>

@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Casamento Rafaela & Romeu - 26.07.2026</title>
+    <title>Casamento Manuela & Hugo - 31.07.2026</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&family=Dancing+Script:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -88,7 +88,7 @@
       @keyframes slideInLeft {
         from {
           opacity: 0;
-          transform: translateX(-50px);
+          transform: translateX(-80px);
         }
         to {
           opacity: 1;
@@ -99,7 +99,7 @@
       @keyframes slideInRight {
         from {
           opacity: 0;
-          transform: translateX(50px);
+          transform: translateX(80px);
         }
         to {
           opacity: 1;
@@ -124,6 +124,12 @@
 
       .section {
         padding: 80px 0;
+        display: none; /* Escondido inicialmente */
+      }
+
+      .section.active {
+        display: block;
+        animation: fadeIn 1.2s ease-out;
       }
 
       .titulo-secao {
@@ -158,7 +164,7 @@
         z-index: 0;
       }
 
-      /* ========== CAPA HERO ========== */
+      /* ========== CAPA HERO COM SETA ELEGANTE ========== */
       .hero-section {
         height: 100vh;
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -186,11 +192,13 @@
 
       .nomes-noivos {
         font-family: "Great Vibes", cursive;
-        font-size: 6rem;
+        font-size: 6.5rem; /* Um pouco maior */
         margin-bottom: 20px;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
         text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-        animation: fadeIn 1.5s ease-out;
+        animation: fadeIn 1.8s ease-out;
+        line-height: 1.1;
+        white-space: nowrap; /* Garante que fique em uma linha */
       }
 
       .data-casamento {
@@ -199,16 +207,67 @@
         margin-bottom: 40px;
         text-transform: uppercase;
         font-weight: 300;
-        animation: fadeIn 1.5s ease-out 0.3s both;
+        animation: fadeIn 1.8s ease-out 0.3s both;
+        font-family: "Cormorant Garamond", serif;
       }
 
       .frase-romantica {
         font-size: 1.5rem;
         max-width: 800px;
-        margin: 0 auto 50px;
+        margin: 0 auto 60px; /* Mais espaço abaixo */
         line-height: 1.8;
         font-style: italic;
-        animation: fadeIn 1.5s ease-out 0.6s both;
+        animation: fadeIn 1.8s ease-out 0.6s both;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* SETA ELEGANTE PARA ABRIR CONVITE */
+      .seta-abrir-convite {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        animation: float 3s ease-in-out infinite;
+        z-index: 10;
+      }
+
+      .seta-abrir-convite:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateX(-50%) scale(1.1);
+        border-color: var(--dourado);
+        box-shadow: 0 10px 30px rgba(201, 166, 107, 0.3);
+      }
+
+      .seta-abrir-convite::after {
+        content: "Abrir Convite";
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        white-space: nowrap;
+        font-family: "Cormorant Garamond", serif;
+        letter-spacing: 1px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .seta-abrir-convite:hover::after {
+        opacity: 1;
       }
 
       .scroll-indicator {
@@ -220,6 +279,7 @@
         font-size: 2rem;
         animation: float 2s ease-in-out infinite;
         cursor: pointer;
+        display: none; /* Só aparece após abrir o convite */
       }
 
       /* ========== TEXTO DO CONVITE ========== */
@@ -248,7 +308,7 @@
         box-shadow: 0 15px 40px var(--sombra);
         position: relative;
         z-index: 1;
-        animation: fadeIn 1s ease-out;
+        animation: fadeIn 1.5s ease-out;
       }
 
       .paragrafo-convite {
@@ -262,18 +322,14 @@
         text-align: center;
         margin-top: 40px;
         font-family: "Great Vibes", cursive;
-        font-size: 2.5rem;
+        font-size: 2.8rem; /* Um pouco maior */
         color: var(--dourado);
+        animation: fadeIn 1.5s ease-out 0.5s both;
       }
 
-      /* ========== CONTADOR REGRESSIVO ========== */
+      /* ========== CONTADOR REGRESSIVO ELEGANTE ========== */
       .contador-section {
-        background: linear-gradient(
-          135deg,
-          var(--marrom) 0%,
-          var(--dourado-escuro) 20%
-        );
-        color: white;
+        background: var(--creme-claro);
         position: relative;
         overflow: hidden;
       }
@@ -285,7 +341,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a66b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
       }
 
       .contador-container {
@@ -298,18 +354,29 @@
 
       .contador-item {
         text-align: center;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
         padding: 30px 20px;
-        border-radius: 15px;
         min-width: 150px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: transform 0.3s;
+        transition: transform 0.5s ease;
+        position: relative;
+      }
+
+      .contador-item::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        background: var(--dourado);
+        transition: width 0.5s ease;
       }
 
       .contador-item:hover {
-        transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-15px);
+      }
+
+      .contador-item:hover::after {
+        width: 80%;
       }
 
       .contador-numero {
@@ -318,14 +385,246 @@
         line-height: 1;
         margin-bottom: 10px;
         font-family: "Playfair Display", serif;
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        color: var(--marrom);
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+      }
+
+      .contador-item:hover .contador-numero {
+        color: var(--dourado-escuro);
       }
 
       .contador-label {
         font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 3px;
-        opacity: 0.9;
+        color: var(--marrom-medio);
+        font-family: "Cormorant Garamond", serif;
+        transition: all 0.3s;
+      }
+
+      .contador-item:hover .contador-label {
+        color: var(--marrom);
+      }
+
+      /* ========== SEÇÃO "COM MUITO CARINHO" ========== */
+      .convite-pessoal-section {
+        background: var(--creme-claro);
+        position: relative;
+        padding: 100px 0;
+      }
+
+      .convite-pessoal-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 60px 40px;
+        background: var(--branco);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      .convite-pessoal-content::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px solid var(--dourado);
+        border-radius: 25px;
+        z-index: -1;
+        opacity: 0.3;
+      }
+
+      .titulo-carinhoso {
+        font-family: "Dancing Script", cursive;
+        font-size: 3.5rem;
+        color: var(--marrom);
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .titulo-carinhoso::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--dourado),
+          transparent
+        );
+      }
+
+      .frase-convite {
+        font-size: 1.4rem;
+        color: var(--marrom);
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-style: italic;
+        animation: fadeIn 1.2s ease-out 0.2s both;
+      }
+
+      .nomes-convidados {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.2rem; /* Um pouco maior */
+        color: var(--dourado-escuro);
+        margin: 40px 0;
+        padding: 20px 0;
+        border-top: 1px solid rgba(201, 166, 107, 0.3);
+        border-bottom: 1px solid rgba(201, 166, 107, 0.3);
+        animation: fadeIn 1.2s ease-out 0.4s both;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .data-elegante {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        color: var(--marrom);
+        margin: 40px 0 20px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        animation: fadeIn 1.2s ease-out 0.6s both;
+      }
+
+      .info-convite {
+        font-size: 1rem;
+        color: var(--marrom-claro);
+        margin-top: 20px;
+        font-style: italic;
+        font-family: "Cormorant Garamond", serif;
+        animation: fadeIn 1.2s ease-out 0.8s both;
+      }
+
+      /* ========== OS NOIVOS ========== */
+      .noivos-section {
+        background: var(--branco);
+        position: relative;
+      }
+
+      .noivos-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .noivo-card {
+        text-align: center;
+        max-width: 350px;
+        animation-duration: 1.5s !important; /* Transições mais lentas */
+        animation-timing-function: ease-out !important;
+      }
+
+      .noivo-card.noiva {
+        animation: slideInLeft 1.5s ease-out; /* Mais lento */
+      }
+
+      .noivo-card.noivo {
+        animation: slideInRight 1.5s ease-out; /* Mais lento */
+      }
+
+      .foto-container {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 30px;
+      }
+
+      .foto-noivo {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 10px solid var(--creme);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        transition: transform 0.7s ease, filter 0.7s ease; /* Mais lento */
+      }
+
+      .foto-noivo:hover {
+        transform: scale(1.08); /* Um pouco mais de zoom */
+        filter: brightness(1.1);
+      }
+
+      .decoracao-foto {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: var(--dourado);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease;
+      }
+
+      .foto-container:hover .decoracao-foto {
+        transform: scale(1.1);
+      }
+
+      .decoracao-foto.feminino {
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, var(--dourado), #e8c37c);
+      }
+
+      .decoracao-foto.masculino {
+        bottom: 20px;
+        left: 20px;
+        background: linear-gradient(135deg, var(--marrom), var(--marrom-medio));
+      }
+
+      .nome-noivo {
+        font-size: 2.2rem;
+        color: var(--marrom);
+        margin-bottom: 10px;
+        font-family: "Playfair Display", serif;
+        animation: fadeIn 1s ease-out 0.3s both;
+      }
+
+      .pais-noivo {
+        font-size: 1.2rem;
+        color: var(--marrom-medio);
+        margin-bottom: 20px;
+        font-style: italic;
+        animation: fadeIn 1s ease-out 0.5s both;
+      }
+
+      .bio-noivo {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--marrom);
+        animation: fadeIn 1s ease-out 0.7s both;
+      }
+
+      .coração-central {
+        animation: pulse 3s ease-in-out infinite;
+        transition: transform 0.5s ease;
+      }
+
+      .coração-central:hover {
+        transform: scale(1.2);
+      }
+
+      .coração-central i {
+        font-size: 4rem;
+        color: var(--dourado);
+        filter: drop-shadow(0 5px 15px rgba(201, 166, 107, 0.4));
       }
 
       /* ========== AGENDA EM RETÂNGULOS BONITOS ========== */
@@ -347,10 +646,24 @@
         border-radius: 20px;
         padding: 40px 30px;
         box-shadow: 0 20px 40px rgba(93, 64, 55, 0.08);
-        transition: all 0.4s ease;
+        transition: all 0.6s ease; /* Mais lento */
         border: 2px solid transparent;
         position: relative;
         overflow: hidden;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .evento-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .evento-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .evento-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .evento-card:nth-child(4) {
+        animation-delay: 0.4s;
       }
 
       .evento-card::before {
@@ -365,12 +678,17 @@
           var(--dourado),
           var(--dourado-escuro)
         );
+        transition: height 0.3s;
       }
 
       .evento-card:hover {
         transform: translateY(-15px);
         box-shadow: 0 30px 60px rgba(93, 64, 55, 0.15);
         border-color: var(--dourado);
+      }
+
+      .evento-card:hover::before {
+        height: 8px;
       }
 
       .evento-hora {
@@ -395,6 +713,11 @@
         color: white;
         font-size: 1.8rem;
         box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
+        transition: transform 0.5s ease;
+      }
+
+      .evento-card:hover .evento-hora .icone {
+        transform: rotate(15deg) scale(1.1);
       }
 
       .evento-hora .hora {
@@ -438,15 +761,15 @@
         border-radius: 30px;
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.3s;
+        transition: all 0.5s ease; /* Mais lento */
         margin-top: 15px;
       }
 
       .botao-mapa:hover {
         background: var(--dourado);
         color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
+        transform: translateY(-5px) scale(1.05); /* Mais pronunciado */
+        box-shadow: 0 15px 30px rgba(201, 166, 107, 0.4); /* Mais sombra */
       }
 
       /* Destaque para cerimônia principal */
@@ -461,163 +784,65 @@
         transform: scale(1.02) translateY(-15px);
       }
 
-      /* ========== OS NOIVOS ========== */
-      .noivos-section {
-        background: var(--branco);
+      /* ========== GALERIA DE FOTOS ========== */
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .foto-item {
         position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        height: 300px;
+        animation: fadeIn 1.2s ease-out;
       }
 
-      .noivos-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 80px;
-        flex-wrap: wrap;
-        margin-top: 50px;
+      .foto-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .foto-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .foto-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .foto-item:nth-child(4) {
+        animation-delay: 0.4s;
       }
 
-      .noivo-card {
-        text-align: center;
-        max-width: 350px;
-        animation: fadeIn 1s ease-out;
-      }
-
-      .noivo-card.noiva {
-        animation: slideInLeft 1s ease-out;
-      }
-
-      .noivo-card.noivo {
-        animation: slideInRight 1s ease-out;
-      }
-
-      .foto-container {
-        position: relative;
-        display: inline-block;
-        margin-bottom: 30px;
-      }
-
-      .foto-noivo {
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
+      .foto-item img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border: 10px solid var(--creme);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        transition: transform 0.5s, filter 0.5s;
+        transition: transform 0.7s ease; /* Mais lento */
       }
 
-      .foto-noivo:hover {
-        transform: scale(1.05);
-        filter: brightness(1.1);
+      .foto-item:hover img {
+        transform: scale(1.12); /* Um pouco mais de zoom */
       }
 
-      .decoracao-foto {
+      .foto-item .legenda {
         position: absolute;
-        width: 60px;
-        height: 60px;
-        background: var(--dourado);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
         color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        transform: translateY(100%);
+        transition: transform 0.5s ease;
       }
 
-      .decoracao-foto.feminino {
-        bottom: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, var(--dourado), #e8c37c);
+      .foto-item:hover .legenda {
+        transform: translateY(0);
       }
 
-      .decoracao-foto.masculino {
-        bottom: 20px;
-        left: 20px;
-        background: linear-gradient(135deg, var(--marrom), var(--marrom-medio));
-      }
-
-      .nome-noivo {
-        font-size: 2.2rem;
-        color: var(--marrom);
-        margin-bottom: 10px;
-        font-family: "Playfair Display", serif;
-      }
-
-      .pais-noivo {
-        font-size: 1.2rem;
-        color: var(--marrom-medio);
-        margin-bottom: 20px;
-        font-style: italic;
-      }
-
-      .bio-noivo {
-        font-size: 1.15rem;
-        line-height: 1.8;
-        color: var(--marrom);
-      }
-
-      .coração-central {
-        animation: pulse 3s ease-in-out infinite;
-      }
-
-      .coração-central i {
-        font-size: 4rem;
-        color: var(--dourado);
-        filter: drop-shadow(0 5px 15px rgba(201, 166, 107, 0.4));
-      }
-      <!-- GALERIA DE FOTOS -->
-    <section class="section" style="background: var(--branco);">
-        <div class="container">
-            <h2 class="titulo-secao">
-                <i class="fas fa-images"></i>
-                Nossa Galeria
-                <i class="fas fa-camera"></i>
-            </h2>
-            
-            <p style="text-align: center; font-size: 1.3rem; max-width: 700px; margin: 0 auto 50px; color: var(--marrom);">
-                <i class="fas fa-heart" style="color: var(--dourado); margin-right: 10px;"></i>
-                Momentos especiais da nossa jornada
-                <i class="fas fa-heart" style="color: var(--dourado); margin-left: 10px;"></i>
-            </p>
-            
-            <div class="galeria-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto;">
-                <!-- Foto 1 -->
-                <div class="foto-item" style="position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; height: 300px;">
-                    <img src="Rafa.jpg" alt="Noiva" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; padding: 20px;">
-                        <p style="margin: 0; font-size: 1.1rem;">Rafaela</p>
-                    </div>
-                </div>
-                
-                <!-- Foto 2 -->
-                <div class="foto-item" style="position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; height: 300px;">
-                    <img src="Romeu.jpg" alt="Noivo" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; padding: 20px;">
-                        <p style="margin: 0; font-size: 1.1rem;">Romeu</p>
-                    </div>
-                </div>
-                
-                <!-- Foto 3 - Casal -->
-                <div class="foto-item" style="position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; height: 300px; grid-column: span 2;">
-                    <img src="migueleluana1.jpg" alt="Casal" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; padding: 20px;">
-                        <p style="margin: 0; font-size: 1.2rem; font-weight: bold;">Juntos para sempre</p>
-                    </div>
-                </div>
-                
-                <!-- Mais fotos (adicione conforme necessário) -->
-                <div class="foto-item" style="position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; height: 300px;">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--creme), #f0e9d8); display: flex; align-items: center; justify-content: center; color: var(--marrom); font-style: italic;">
-                        <div style="text-align: center; padding: 20px;">
-                            <i class="fas fa-heart" style="font-size: 2.5rem; color: var(--dourado); margin-bottom: 15px;"></i>
-                            <p>Mais fotos em breve!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
       /* ========== RSVP ========== */
       .rsvp-section {
         background: linear-gradient(135deg, var(--creme) 0%, #f8f4e9 100%);
@@ -640,10 +865,21 @@
         border-radius: 20px;
         text-decoration: none;
         color: white;
-        transition: all 0.4s;
+        transition: all 0.6s ease; /* Mais lento */
         position: relative;
         overflow: hidden;
         z-index: 1;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .rsvp-botao:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .rsvp-botao:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .rsvp-botao:nth-child(3) {
+        animation-delay: 0.3s;
       }
 
       .rsvp-botao::before {
@@ -662,8 +898,8 @@
       }
 
       .rsvp-botao:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-12px) scale(1.04); /* Mais pronunciado */
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); /* Mais sombra */
       }
 
       .rsvp-botao .icone {
@@ -675,6 +911,11 @@
         align-items: center;
         justify-content: center;
         font-size: 1.8rem;
+        transition: transform 0.5s ease;
+      }
+
+      .rsvp-botao:hover .icone {
+        transform: rotate(15deg) scale(1.1);
       }
 
       .rsvp-botao .texto {
@@ -718,16 +959,27 @@
         padding: 40px 30px;
         border-radius: 20px;
         text-align: center;
-        transition: all 0.4s;
+        transition: all 0.6s ease; /* Mais lento */
         border: 2px solid transparent;
         position: relative;
         overflow: hidden;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .presente-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .presente-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .presente-card:nth-child(3) {
+        animation-delay: 0.3s;
       }
 
       .presente-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-12px); /* Mais pronunciado */
         border-color: var(--dourado);
-        box-shadow: 0 20px 40px rgba(201, 166, 107, 0.15);
+        box-shadow: 0 25px 50px rgba(201, 166, 107, 0.2); /* Mais sombra */
       }
 
       .presente-icone {
@@ -746,6 +998,11 @@
         color: white;
         font-size: 2rem;
         box-shadow: 0 15px 30px rgba(201, 166, 107, 0.3);
+        transition: transform 0.5s ease;
+      }
+
+      .presente-card:hover .presente-icone {
+        transform: rotate(15deg) scale(1.1);
       }
 
       .presente-titulo {
@@ -795,6 +1052,7 @@
         font-size: 3.5rem;
         color: var(--dourado);
         margin-bottom: 30px;
+        animation: fadeIn 1.2s ease-out;
       }
 
       .info-contato {
@@ -807,6 +1065,17 @@
 
       .contato-item {
         text-align: center;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .contato-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .contato-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .contato-item:nth-child(3) {
+        animation-delay: 0.3s;
       }
 
       .contato-item i {
@@ -832,14 +1101,25 @@
         justify-content: center;
         color: var(--dourado);
         font-size: 1.3rem;
-        transition: all 0.3s;
+        transition: all 0.5s ease; /* Mais lento */
         text-decoration: none;
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .rede-social:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .rede-social:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .rede-social:nth-child(3) {
+        animation-delay: 0.3s;
       }
 
       .rede-social:hover {
         background: var(--dourado);
         color: var(--marrom);
-        transform: translateY(-5px);
+        transform: translateY(-8px) scale(1.1); /* Mais pronunciado */
       }
 
       .copyright {
@@ -848,6 +1128,7 @@
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.7);
         font-size: 0.9rem;
+        animation: fadeIn 1.2s ease-out 0.5s both;
       }
 
       /* ========== BOTÃO VOLTAR AO TOPO ========== */
@@ -871,13 +1152,13 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0 10px 30px rgba(201, 166, 107, 0.4);
-        transition: all 0.3s;
+        transition: all 0.5s ease; /* Mais lento */
         z-index: 1000;
       }
 
       .botao-topo:hover {
-        transform: translateY(-5px) scale(1.1);
-        box-shadow: 0 15px 40px rgba(201, 166, 107, 0.6);
+        transform: translateY(-8px) scale(1.1); /* Mais pronunciado */
+        box-shadow: 0 20px 40px rgba(201, 166, 107, 0.6); /* Mais sombra */
       }
 
       /* ========== RESPONSIVIDADE ========== */
@@ -889,7 +1170,7 @@
 
       @media (max-width: 992px) {
         .nomes-noivos {
-          font-size: 4.5rem;
+          font-size: 5rem;
         }
 
         .data-casamento {
@@ -918,11 +1199,20 @@
           width: 200px;
           height: 200px;
         }
+
+        .titulo-carinhoso {
+          font-size: 2.8rem;
+        }
+
+        .nomes-convidados {
+          font-size: 1.5rem;
+          white-space: normal;
+        }
       }
 
       @media (max-width: 768px) {
         .nomes-noivos {
-          font-size: 3.5rem;
+          font-size: 4rem;
         }
 
         .data-casamento {
@@ -932,6 +1222,7 @@
 
         .frase-romantica {
           font-size: 1.2rem;
+          margin: 0 auto 40px;
         }
 
         .titulo-secao {
@@ -978,11 +1269,35 @@
           height: 50px;
           font-size: 1.2rem;
         }
+
+        .titulo-carinhoso {
+          font-size: 2.2rem;
+        }
+
+        .nomes-convidados {
+          font-size: 1rem;
+          white-space: normal;
+        }
+
+        .data-elegante {
+          font-size: 1.6rem;
+        }
+
+        .convite-pessoal-content {
+          padding: 40px 25px;
+        }
+
+        .seta-abrir-convite {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
       }
 
       @media (max-width: 480px) {
         .nomes-noivos {
-          font-size: 2.8rem;
+          font-size: 3.2rem;
+          white-space: normal; /* Permite quebra em mobile */
         }
 
         .data-casamento {
@@ -1025,151 +1340,30 @@
           width: 180px;
           height: 180px;
         }
+
+        .titulo-carinhoso {
+          font-size: 1.8rem;
+        }
+
+        .nomes-convidados {
+          font-size: 1.2rem;
+          white-space: normal;
+        }
+
+        .data-elegante {
+          font-size: 1.3rem;
+        }
+
+        .seta-abrir-convite {
+          width: 45px;
+          height: 45px;
+          font-size: 1.3rem;
+          bottom: 40px;
+        }
       }
     </style>
   </head>
-  <!-- MODAL DE CONFIRMAÇÃO -->
-  <div
-    id="modal-confirmacao"
-    style="
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.3s;
-    "
-  >
-    <div
-      style="
-        background: white;
-        padding: 50px;
-        border-radius: 20px;
-        max-width: 500px;
-        width: 90%;
-        text-align: center;
-        position: relative;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 0.5s;
-      "
-    >
-      <button
-        id="fechar-modal"
-        style="
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          background: none;
-          border: none;
-          font-size: 1.8rem;
-          color: var(--marrom-claro);
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          transition: background 0.3s;
-        "
-      >
-        <i class="fas fa-times"></i>
-      </button>
 
-      <div
-        style="
-          background: linear-gradient(
-            135deg,
-            var(--dourado),
-            var(--dourado-escuro)
-          );
-          color: white;
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 30px;
-          font-size: 3rem;
-        "
-      >
-        <i class="fas fa-heart"></i>
-      </div>
-
-      <h3 style="color: var(--marrom); margin-bottom: 20px; font-size: 1.8rem">
-        Mensagem Enviada!
-      </h3>
-
-      <p
-        style="
-          color: var(--marrom-medio);
-          margin-bottom: 30px;
-          font-size: 1.1rem;
-          line-height: 1.6;
-        "
-      >
-        Obrigado pela sua mensagem especial! <br />
-        Os noivos vão adorar receber o seu carinho.
-      </p>
-
-      <button
-        id="ok-modal"
-        style="
-          background: linear-gradient(
-            135deg,
-            var(--dourado),
-            var(--dourado-escuro)
-          );
-          color: white;
-          border: none;
-          padding: 15px 40px;
-          border-radius: 50px;
-          font-size: 1.1rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          margin: 0 auto;
-          transition: all 0.3s;
-        "
-      >
-        <i class="fas fa-check"></i> OK
-      </button>
-    </div>
-  </div>
-
-  <style>
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .foto-item:hover img {
-      transform: scale(1.1);
-    }
-
-    #fechar-modal:hover {
-      background: var(--creme);
-    }
-
-    #ok-modal:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
-    }
-  </style>
   <body>
     <!-- MÚSICA DE FUNDO -->
     <audio id="musica-fundo" loop preload="auto">
@@ -1177,873 +1371,1132 @@
       Seu navegador não suporta áudio.
     </audio>
 
-    <!-- CAPA / HERO -->
+    <!-- CAPA / HERO COM SETA ELEGANTE -->
     <section class="hero-section" id="inicio">
       <div class="container">
-        <h1 class="nomes-noivos">Rafaela & Romeu</h1>
-        <p class="data-casamento">26 · JULHO · 2026</p>
+        <!-- NOMES EM UMA LINHA SÓ -->
+        <h1 class="nomes-noivos">Manuela & Hugo</h1>
+
+        <!-- DATA -->
+        <p class="data-casamento">31 · JULHO · 2026</p>
+
+        <!-- FRASE ROMÂNTICA -->
         <p class="frase-romantica">
           "O amor não consiste em olhar um para o outro, mas sim em olharem
           juntos na mesma direção."<br />
           - Antoine de Saint-Exupéry
         </p>
       </div>
-      <a href="#convite" class="scroll-indicator">
+
+      <!-- SETA ELEGANTE PARA ABRIR CONVITE -->
+      <div class="seta-abrir-convite" id="abrirConvite">
         <i class="fas fa-chevron-down"></i>
-      </a>
-    </section>
-
-    <!-- TEXTO DO CONVITE -->
-    <section class="texto-convite-section section" id="convite">
-      <div class="container">
-        <h2 class="titulo-secao">
-          <i class="fas fa-heart"></i>
-          Com a bênção de Deus
-          <i class="fas fa-heart"></i>
-        </h2>
-        <div class="texto-convite-content">
-          <p class="paragrafo-convite">Caros familiares e amigos,</p>
-          <p class="paragrafo-convite">
-            É com imensa alegria e corações transbordantes de felicidade que
-            anunciamos a celebração do nosso amor. Depois de uma linda jornada a
-            dois, decidimos oficializar nossa união perante Deus, nossa família
-            e amigos.
-          </p>
-          <p class="paragrafo-convite">
-            Convidamos você, que faz parte da nossa história, para compartilhar
-            conosco este momento único e especial. Sua presença será a maior
-            honra e completará nossa felicidade neste dia tão significativo.
-          </p>
-          <p class="paragrafo-convite">
-            Juntem-se a nós para celebrar o início desta nova etapa, repleta de
-            amor, sonhos e promessas para uma vida inteira juntos.
-          </p>
-          <div class="assinatura">Rafaela & Romeu</div>
-        </div>
       </div>
     </section>
 
-    <!-- CONTADOR REGRESSIVO -->
-    <section class="contador-section section">
-      <div class="container">
-        <h2 class="titulo-secao" style="color: white">
-          <i class="fas fa-hourglass-half"></i>
-          Contagem Regressiva
-          <i class="fas fa-clock"></i>
-        </h2>
-        <p
-          style="
-            text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.9);
-          "
-        >
-          <i class="fas fa-calendar-star"></i>
-          Faltam apenas...
-        </p>
-        <div class="contador-container">
-          <div class="contador-item">
-            <div class="contador-numero" id="dias">00</div>
-            <div class="contador-label">Dias</div>
-          </div>
-          <div class="contador-item">
-            <div class="contador-numero" id="horas">00</div>
-            <div class="contador-label">Horas</div>
-          </div>
-          <div class="contador-item">
-            <div class="contador-numero" id="minutos">00</div>
-            <div class="contador-label">Minutos</div>
-          </div>
-          <div class="contador-item">
-            <div class="contador-numero" id="segundos">00</div>
-            <div class="contador-label">Segundos</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SAUDAÇÃO PERSONALIZADA -->
-    <section class="section" style="background: var(--branco)">
-      <div class="container">
-        <div class="texto-convite-content">
+    <!-- CONTEÚDO DO CONVITE (inicialmente oculto) -->
+    <div id="conteudoConvite" style="display: none">
+      <!-- TEXTO DO CONVITE -->
+      <section class="texto-convite-section section active" id="convite">
+        <div class="container">
           <h2 class="titulo-secao">
-            <i class="fas fa-user-circle"></i>
-            Caro(a) Convidado(a)
+            <i class="fas fa-heart"></i>
+            Com a bênção de Deus
+            <i class="fas fa-heart"></i>
           </h2>
-          <p class="paragrafo-convite">
+          <div class="texto-convite-content">
+            <p class="paragrafo-convite">Caros familiares e amigos,</p>
+            <p class="paragrafo-convite">
+              É com imensa alegria e corações transbordantes de felicidade que
+              anunciamos a celebração do nosso amor. Depois de uma linda jornada
+              a dois, decidimos oficializar nossa união perante Deus, nossa
+              família e amigos.
+            </p>
+            <p class="paragrafo-convite">
+              Convidamos você, que faz parte da nossa história, para
+              compartilhar conosco este momento único e especial. Sua presença
+              será a maior honra e completará nossa felicidade neste dia tão
+              significativo.
+            </p>
+            <p class="paragrafo-convite">
+              Juntem-se a nós para celebrar o início desta nova etapa, repleta
+              de amor, sonhos e promessas para uma vida inteira juntos.
+            </p>
+            <!-- ASSINATURA -->
+            <div class="assinatura">Manuela & Hugo</div>
+          </div>
+        </div>
+        <a href="#contador" class="scroll-indicator">
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </section>
+
+      <!-- CONTADOR REGRESSIVO ELEGANTE -->
+      <section class="contador-section section" id="contador">
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-hourglass-half"></i>
+            Contagem Regressiva
+            <i class="fas fa-clock"></i>
+          </h2>
+          <p
+            style="
+              text-align: center;
+              font-size: 1.3rem;
+              margin-bottom: 20px;
+              color: var(--marrom-medio);
+            "
+          >
+            <i class="fas fa-calendar-star"></i>
+            Faltam apenas...
+          </p>
+          <div class="contador-container">
+            <div class="contador-item">
+              <div class="contador-numero" id="dias">00</div>
+              <div class="contador-label">Dias</div>
+            </div>
+            <div class="contador-item">
+              <div class="contador-numero" id="horas">00</div>
+              <div class="contador-label">Horas</div>
+            </div>
+            <div class="contador-item">
+              <div class="contador-numero" id="minutos">00</div>
+              <div class="contador-label">Minutos</div>
+            </div>
+            <div class="contador-item">
+              <div class="contador-numero" id="segundos">00</div>
+              <div class="contador-label">Segundos</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OS NOIVOS (com transições mais visíveis) -->
+      <section class="noivos-section section" id="noivos">
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-heart"></i>
+            Os Noivos
+            <i class="fas fa-heart"></i>
+          </h2>
+          <div class="noivos-container">
+            <!-- NOIVA -->
+            <div class="noivo-card noiva">
+              <div class="foto-container">
+                <img
+                  src="Rafa.jpg"
+                  alt="Manuela Dias de Souza"
+                  class="foto-noivo"
+                />
+                <div class="decoracao-foto feminino">
+                  <i class="fas fa-female"></i>
+                </div>
+              </div>
+              <h3 class="nome-noivo">Manuela Dias de Souza</h3>
+              <p class="pais-noivo">
+                <i class="fas fa-users"></i>
+                Filha de Nelma Nairim e Gilberto Júlio de Souza
+              </p>
+              <p class="bio-noivo">
+                <i
+                  class="fas fa-palette"
+                  style="color: var(--dourado); margin-right: 10px"
+                ></i>
+                Arquiteta apaixonada por design sustentável e natureza. Formada
+                pela Universidade Federal, dedica-se a projetos que harmonizam
+                beleza e funcionalidade. Seu sorriso ilumina qualquer ambiente e
+                seu coração generoso cativa a todos que a conhecem.
+              </p>
+              <div style="margin-top: 20px; color: var(--marrom-claro)">
+                <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
+                "O amor verdadeiro transforma tudo ao nosso redor."
+                <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
+              </div>
+            </div>
+
+            <!-- CORAÇÃO CENTRAL -->
+            <div class="coração-central">
+              <i class="fas fa-heart"></i>
+            </div>
+
+            <!-- NOIVO -->
+            <div class="noivo-card noivo">
+              <div class="foto-container">
+                <img
+                  src="Romeu.jpg"
+                  alt="Hugo Diego Correia"
+                  class="foto-noivo"
+                />
+                <div class="decoracao-foto masculino">
+                  <i class="fas fa-male"></i>
+                </div>
+              </div>
+              <h3 class="nome-noivo">Hugo Diego Correia</h3>
+              <p class="pais-noivo">
+                <i class="fas fa-users"></i>
+                Filho de Miriam Costa de Vales e Vitor Hugo Correia
+              </p>
+              <p class="bio-noivo">
+                <i
+                  class="fas fa-laptop-code"
+                  style="color: var(--dourado); margin-right: 10px"
+                ></i>
+                Engenheiro informático especializado em inteligência artificial.
+                Trabalha desenvolvendo soluções tecnológicas inovadoras. Possui
+                grande senso de humor e dedicação incondicional à família. Sua
+                paciência e bondade encantam a todos ao seu redor.
+              </p>
+              <div style="margin-top: 20px; color: var(--marrom-claro)">
+                <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
+                "Encontrei na Manuela o significado da palavra 'casa'."
+                <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO "COM MUITO CARINHO" -->
+      <section class="convite-pessoal-section section" id="convite-pessoal">
+        <div class="container">
+          <div class="convite-pessoal-content">
+            <h2 class="titulo-carinhoso">Com muito carinho</h2>
+
+            <p class="frase-convite">temos o prazer de convidar</p>
+
+            <div class="nomes-convidados">Santos Silva e Lara de Oliveira</div>
+
+            <p class="frase-convite">para a celebração do nosso casamento</p>
+
+            <div class="data-elegante">SÁBADO, 31 DE JULHO DE 2026</div>
+
+            <div style="margin: 30px 0">
+              <div
+                style="
+                  display: inline-block;
+                  padding: 10px 30px;
+                  background: var(--creme);
+                  border-radius: 50px;
+                  color: var(--marrom);
+                  font-family: 'Cormorant Garamond', serif;
+                "
+              >
+                <i class="fas fa-clock" style="margin-right: 8px"></i>
+                Cerimônia: 14:00 horas
+              </div>
+            </div>
+
+            <p class="info-convite">
+              <i class="fas fa-info-circle" style="margin-right: 8px"></i>
+              Convite válido para 2 pessoas
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGENDA EM RETÂNGULOS BONITOS -->
+      <section class="agenda-section section" id="agenda">
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-calendar-alt"></i>
+            Agenda do Casamento
+            <i class="fas fa-map-marked-alt"></i>
+          </h2>
+          <div class="agenda-grid">
+            <!-- CERIMÔNIA PRINCIPAL -->
+            <div class="evento-card principal">
+              <div class="evento-hora">
+                <div class="icone">
+                  <i class="fas fa-church"></i>
+                </div>
+                <div class="hora">14:00</div>
+              </div>
+              <h3 class="evento-titulo">Cerimônia Religiosa</h3>
+              <p class="evento-local">
+                <i class="fas fa-map-marker-alt"></i>
+                Igreja de Nossa Senhora da Conceição
+              </p>
+              <p class="evento-endereco">Maputo, Moçambique</p>
+              <p
+                style="
+                  color: var(--marrom-medio);
+                  margin-bottom: 20px;
+                  font-size: 1.1rem;
+                "
+              >
+                <i class="fas fa-info-circle"></i> Cerimônia tradicional seguida
+                de bênção matrimonial
+              </p>
+              <a
+                href="https://maps.google.com/?q=Igreja+Nossa+Senhora+da+Conceição+Maputo"
+                class="botao-mapa"
+                target="_blank"
+              >
+                <i class="fas fa-directions"></i> Ver rota no mapa
+              </a>
+            </div>
+
+            <!-- SESSÃO DE FOTOS -->
+            <div class="evento-card">
+              <div class="evento-hora">
+                <div
+                  class="icone"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      var(--marrom-claro),
+                      var(--marrom-medio)
+                    );
+                  "
+                >
+                  <i class="fas fa-camera"></i>
+                </div>
+                <div class="hora">16:00</div>
+              </div>
+              <h3 class="evento-titulo">Sessão de Fotos</h3>
+              <p class="evento-local">
+                <i class="fas fa-tree"></i>
+                Jardim Tunduru
+              </p>
+              <p class="evento-endereco">Área dos Jardins - Maputo</p>
+              <a
+                href="https://maps.google.com/?q=Jardim+Tunduru+Maputo"
+                class="botao-mapa"
+                target="_blank"
+              >
+                <i class="fas fa-map-marker-alt"></i> Ver no mapa
+              </a>
+            </div>
+
+            <!-- COPO D'ÁGUA -->
+            <div class="evento-card">
+              <div class="evento-hora">
+                <div
+                  class="icone"
+                  style="
+                    background: linear-gradient(135deg, var(--marrom), #4a352c);
+                  "
+                >
+                  <i class="fas fa-glass-cheers"></i>
+                </div>
+                <div class="hora">18:00</div>
+              </div>
+              <h3 class="evento-titulo">Copo d'Água</h3>
+              <p class="evento-local">
+                <i class="fas fa-hotel"></i>
+                Hotel Polana Serena
+              </p>
+              <p class="evento-endereco">Sala de Eventos - 3º Andar</p>
+              <a
+                href="https://maps.google.com/?q=Hotel+Polana+Maputo"
+                class="botao-mapa"
+                target="_blank"
+              >
+                <i class="fas fa-map-marker-alt"></i> Ver no mapa
+              </a>
+            </div>
+
+            <!-- FESTA -->
+            <div class="evento-card">
+              <div class="evento-hora">
+                <div
+                  class="icone"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #8d6e63,
+                      var(--marrom-claro)
+                    );
+                  "
+                >
+                  <i class="fas fa-music"></i>
+                </div>
+                <div class="hora">20:00</div>
+              </div>
+              <h3 class="evento-titulo">Festa de Recepção</h3>
+              <p class="evento-local">
+                <i class="fas fa-glass-cheers"></i>
+                Centro de Conferências Joaquim Chissano
+              </p>
+              <p class="evento-endereco">
+                Salão Principal - Capacidade 500 pessoas
+              </p>
+              <a
+                href="https://maps.google.com/?q=Centro+Conferências+Joaquim+Chissano+Maputo"
+                class="botao-mapa"
+                target="_blank"
+              >
+                <i class="fas fa-map-marker-alt"></i> Ver no mapa
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERIA DE FOTOS -->
+      <section class="section" style="background: var(--branco)">
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-images"></i>
+            Nossa Galeria
+            <i class="fas fa-camera"></i>
+          </h2>
+
+          <p
+            style="
+              text-align: center;
+              font-size: 1.3rem;
+              max-width: 700px;
+              margin: 0 auto 50px;
+              color: var(--marrom);
+            "
+          >
             <i
-              class="fas fa-glass-cheers"
+              class="fas fa-heart"
               style="color: var(--dourado); margin-right: 10px"
             ></i>
-            Sua presença é muito importante para nós. Este convite é válido para
-            você e seu acompanhante.
+            Momentos especiais da nossa jornada
+            <i
+              class="fas fa-heart"
+              style="color: var(--dourado); margin-left: 10px"
+            ></i>
           </p>
-          <p class="paragrafo-convite">
+
+          <div class="galeria-grid">
+            <!-- Foto 1 -->
+            <div class="foto-item">
+              <img src="Rafa.jpg" alt="Noiva" />
+              <div class="legenda">
+                <p style="margin: 0; font-size: 1.1rem">Manuela</p>
+              </div>
+            </div>
+
+            <!-- Foto 2 -->
+            <div class="foto-item">
+              <img src="Romeu.jpg" alt="Noivo" />
+              <div class="legenda">
+                <p style="margin: 0; font-size: 1.1rem">Hugo</p>
+              </div>
+            </div>
+
+            <!-- Foto 3 - Casal -->
+            <div class="foto-item" style="grid-column: span 2">
+              <img src="migueleluana1.jpg" alt="Casal" />
+              <div class="legenda">
+                <p style="margin: 0; font-size: 1.2rem; font-weight: bold">
+                  Juntos para sempre
+                </p>
+              </div>
+            </div>
+
+            <!-- Mais fotos -->
+            <div class="foto-item">
+              <div
+                style="
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(135deg, var(--creme), #f0e9d8);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--marrom);
+                  font-style: italic;
+                "
+              >
+                <div style="text-align: center; padding: 20px">
+                  <i
+                    class="fas fa-heart"
+                    style="
+                      font-size: 2.5rem;
+                      color: var(--dourado);
+                      margin-bottom: 15px;
+                    "
+                  ></i>
+                  <p>Mais fotos em breve!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section class="rsvp-section section" id="rsvp">
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-check-circle"></i>
+            Confirme sua Presença
+            <i class="fas fa-user-check"></i>
+          </h2>
+          <p
+            style="
+              text-align: center;
+              font-size: 1.3rem;
+              max-width: 800px;
+              margin: 0 auto 30px;
+              color: var(--marrom);
+            "
+          >
             <i
               class="fas fa-calendar-check"
               style="color: var(--dourado); margin-right: 10px"
             ></i>
-            Por favor, confirme sua presença até
-            <strong style="color: var(--dourado)">15 de Julho de 2026</strong>.
+            Para nos ajudar nos preparativos, confirme sua presença até
+            <strong>15 de Julho de 2026</strong>
           </p>
-          <div style="text-align: center; margin-top: 30px">
-            <div
-              style="
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                background: var(--creme);
-                padding: 15px 30px;
-                border-radius: 50px;
-                border: 2px dashed var(--dourado);
-              "
+          <div class="rsvp-botoes">
+            <!-- WHATSAPP -->
+            <a
+              href="https://wa.me/258860660750?text=Olá!%20Confirmo%20a%20minha%20presença%20no%20casamento%20da%20Manuela%20e%20do%20Hugo%20em%2031%20de%20Julho%20de%202026."
+              class="rsvp-botao whatsapp"
+              target="_blank"
             >
-              <i class="fas fa-heart" style="color: var(--dourado)"></i>
-              <span id="nome-convidado">Convidado Especial</span>
-              <i class="fas fa-heart" style="color: var(--dourado)"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AGENDA EM RETÂNGULOS BONITOS -->
-    <section class="agenda-section section" id="agenda">
-      <div class="container">
-        <h2 class="titulo-secao">
-          <i class="fas fa-calendar-alt"></i>
-          Agenda do Casamento
-          <i class="fas fa-map-marked-alt"></i>
-        </h2>
-        <div class="agenda-grid">
-          <!-- CERIMÔNIA PRINCIPAL -->
-          <div class="evento-card principal">
-            <div class="evento-hora">
               <div class="icone">
-                <i class="fas fa-church"></i>
+                <i class="fab fa-whatsapp"></i>
               </div>
-              <div class="hora">14:00</div>
-            </div>
-            <h3 class="evento-titulo">Cerimônia Religiosa</h3>
-            <p class="evento-local">
-              <i class="fas fa-map-marker-alt"></i>
-              Igreja de Nossa Senhora da Conceição
-            </p>
-            <p class="evento-endereco">Maputo, Moçambique</p>
-            <p
-              style="
-                color: var(--marrom-medio);
-                margin-bottom: 20px;
-                font-size: 1.1rem;
-              "
-            >
-              <i class="fas fa-info-circle"></i> Cerimônia tradicional seguida
-              de bênção matrimonial
-            </p>
+              <div class="texto">
+                <strong>WhatsApp</strong>
+                <small>Resposta rápida e prática</small>
+              </div>
+              <i class="fas fa-external-link-alt" style="opacity: 0.7"></i>
+            </a>
+
+            <!-- E-MAIL -->
             <a
-              href="https://maps.google.com/?q=Igreja+Nossa+Senhora+da+Conceição+Maputo"
-              class="botao-mapa"
-              target="_blank"
+              href="mailto:casamento.manuela.hugo@gmail.com?subject=Confirmação%20de%20Presença%20-%20Casamento%20Manuela%20e%20Hugo&body=Olá!%20Confirmo%20a%20minha%20presença%20no%20vosso%20casamento%20no%20dia%2031%20de%20Julho%20de%202026.%0A%0ANome:%0AAcompanhantes:%0AMensagem%20especial%20(opcional):"
+              class="rsvp-botao email"
             >
-              <i class="fas fa-directions"></i> Ver rota no mapa
+              <div class="icone">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="texto">
+                <strong>E-mail</strong>
+                <small>Envie sua confirmação</small>
+              </div>
+              <i class="fas fa-paper-plane" style="opacity: 0.7"></i>
+            </a>
+
+            <!-- TELEFONE -->
+            <a href="tel:+258841234567" class="rsvp-botao telefone">
+              <div class="icone">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="texto">
+                <strong>Telefone</strong>
+                <small>Ligue para confirmar</small>
+              </div>
+              <i class="fas fa-phone" style="opacity: 0.7"></i>
             </a>
           </div>
-
-          <!-- SESSÃO DE FOTOS -->
-          <div class="evento-card">
-            <div class="evento-hora">
-              <div
-                class="icone"
-                style="
-                  background: linear-gradient(
-                    135deg,
-                    var(--marrom-claro),
-                    var(--marrom-medio)
-                  );
-                "
-              >
-                <i class="fas fa-camera"></i>
-              </div>
-              <div class="hora">16:00</div>
-            </div>
-            <h3 class="evento-titulo">Sessão de Fotos</h3>
-            <p class="evento-local">
-              <i class="fas fa-tree"></i>
-              Jardim Tunduru
-            </p>
-            <p class="evento-endereco">Área dos Jardins - Maputo</p>
-            <a
-              href="https://maps.google.com/?q=Jardim+Tunduru+Maputo"
-              class="botao-mapa"
-              target="_blank"
-            >
-              <i class="fas fa-map-marker-alt"></i> Ver no mapa
-            </a>
-          </div>
-
-          <!-- COPO D'ÁGUA -->
-          <div class="evento-card">
-            <div class="evento-hora">
-              <div
-                class="icone"
-                style="
-                  background: linear-gradient(135deg, var(--marrom), #4a352c);
-                "
-              >
-                <i class="fas fa-glass-cheers"></i>
-              </div>
-              <div class="hora">18:00</div>
-            </div>
-            <h3 class="evento-titulo">Copo d'Água</h3>
-            <p class="evento-local">
-              <i class="fas fa-hotel"></i>
-              Hotel Polana Serena
-            </p>
-            <p class="evento-endereco">Sala de Eventos - 3º Andar</p>
-            <a
-              href="https://maps.google.com/?q=Hotel+Polana+Maputo"
-              class="botao-mapa"
-              target="_blank"
-            >
-              <i class="fas fa-map-marker-alt"></i> Ver no mapa
-            </a>
-          </div>
-
-          <!-- FESTA -->
-          <div class="evento-card">
-            <div class="evento-hora">
-              <div
-                class="icone"
-                style="
-                  background: linear-gradient(
-                    135deg,
-                    #8d6e63,
-                    var(--marrom-claro)
-                  );
-                "
-              >
-                <i class="fas fa-music"></i>
-              </div>
-              <div class="hora">20:00</div>
-            </div>
-            <h3 class="evento-titulo">Festa de Recepção</h3>
-            <p class="evento-local">
-              <i class="fas fa-glass-cheers"></i>
-              Centro de Conferências Joaquim Chissano
-            </p>
-            <p class="evento-endereco">
-              Salão Principal - Capacidade 500 pessoas
-            </p>
-            <a
-              href="https://maps.google.com/?q=Centro+Conferências+Joaquim+Chissano+Maputo"
-              class="botao-mapa"
-              target="_blank"
-            >
-              <i class="fas fa-map-marker-alt"></i> Ver no mapa
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- OS NOIVOS -->
-    <section class="noivos-section section" id="noivos">
-      <div class="container">
-        <h2 class="titulo-secao">
-          <i class="fas fa-heart"></i>
-          Os Noivos
-          <i class="fas fa-heart"></i>
-        </h2>
-        <div class="noivos-container">
-          <!-- NOIVA -->
-          <div class="noivo-card noiva">
-            <div class="foto-container">
-              <img src="Rafa.jpg" alt="Rafaela Macuacua" class="foto-noivo" />
-              <div class="decoracao-foto feminino">
-                <i class="fas fa-female"></i>
-              </div>
-            </div>
-            <h3 class="nome-noivo">Rafaela Macuacua</h3>
-            <p class="pais-noivo">
-              <i class="fas fa-users"></i>
-              Filha de Sheila Ernesto e Rafael Macuacua
-            </p>
-            <p class="bio-noivo">
-              <i
-                class="fas fa-palette"
-                style="color: var(--dourado); margin-right: 10px"
-              ></i>
-              Arquiteta apaixonada por design sustentável e natureza. Formada
-              pela Universidade Eduardo Mondlane, dedica-se a projetos que
-              harmonizam beleza e funcionalidade. Seu sorriso ilumina qualquer
-              ambiente e seu coração generoso cativa a todos que a conhecem.
-            </p>
-            <div style="margin-top: 20px; color: var(--marrom-claro)">
-              <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
-              "O amor verdadeiro transforma tudo ao nosso redor."
-              <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
-            </div>
-          </div>
-
-          <!-- CORAÇÃO CENTRAL -->
-          <div class="coração-central">
-            <i class="fas fa-heart"></i>
-          </div>
-
-          <!-- NOIVO -->
-          <div class="noivo-card noivo">
-            <div class="foto-container">
-              <img
-                src="Romeu.jpg"
-                alt="Romeu Fernandes Jr"
-                class="foto-noivo"
-              />
-              <div class="decoracao-foto masculino">
-                <i class="fas fa-male"></i>
-              </div>
-            </div>
-            <h3 class="nome-noivo">Romeu Fernandes Jr</h3>
-            <p class="pais-noivo">
-              <i class="fas fa-users"></i>
-              Filho de Fatima Lizo e Romeu Fernandes
-            </p>
-            <p class="bio-noivo">
-              <i
-                class="fas fa-laptop-code"
-                style="color: var(--dourado); margin-right: 10px"
-              ></i>
-              Engenheiro informático especializado em inteligência artificial.
-              Trabalha desenvolvendo soluções tecnológicas inovadoras. Possui
-              grande senso de humor e dedicação incondicional à família. Sua
-              paciência e bondade encantam a todos ao seu redor.
-            </p>
-            <div style="margin-top: 20px; color: var(--marrom-claro)">
-              <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
-              "Encontrei na Rafaela o significado da palavra 'casa'."
-              <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section class="rsvp-section section" id="rsvp">
-      <div class="container">
-        <h2 class="titulo-secao">
-          <i class="fas fa-check-circle"></i>
-          Confirme sua Presença
-          <i class="fas fa-user-check"></i>
-        </h2>
-        <p
-          style="
-            text-align: center;
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: var(--marrom);
-          "
-        >
-          <i
-            class="fas fa-calendar-check"
-            style="color: var(--dourado); margin-right: 10px"
-          ></i>
-          Para nos ajudar nos preparativos, confirme sua presença até
-          <strong>15 de Julho de 2026</strong>
-        </p>
-        <div class="rsvp-botoes">
-          <!-- WHATSAPP -->
-          <a
-            href="https://wa.me/258860660750?text=Olá!%20Confirmo%20a%20minha%20presença%20no%20casamento%20da%20Rafaela%20e%20do%20Romeu%20em%2026%20de%20Julho%20de%202026."
-            class="rsvp-botao whatsapp"
-            target="_blank"
+          <p
+            style="
+              text-align: center;
+              margin-top: 30px;
+              color: var(--marrom-medio);
+              font-style: italic;
+            "
           >
-            <div class="icone">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="texto">
-              <strong>WhatsApp</strong>
-              <small>Resposta rápida e prática</small>
-            </div>
-            <i class="fas fa-external-link-alt" style="opacity: 0.7"></i>
-          </a>
-
-          <!-- E-MAIL -->
-          <a
-            href="mailto:casamento.rafaela.romeu@gmail.com?subject=Confirmação%20de%20Presença%20-%20Casamento%20Rafaela%20e%20Romeu&body=Olá!%20Confirmo%20a%20minha%20presença%20no%20vosso%20casamento%20no%20dia%2026%20de%20Julho%20de%202026.%0A%0ANome:%0AAcompanhantes:%0AMensagem%20especial%20(opcional):"
-            class="rsvp-botao email"
-          >
-            <div class="icone">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="texto">
-              <strong>E-mail</strong>
-              <small>Envie sua confirmação</small>
-            </div>
-            <i class="fas fa-paper-plane" style="opacity: 0.7"></i>
-          </a>
-
-          <!-- TELEFONE -->
-          <a href="tel:+258841234567" class="rsvp-botao telefone">
-            <div class="icone">
-              <i class="fas fa-phone-alt"></i>
-            </div>
-            <div class="texto">
-              <strong>Telefone</strong>
-              <small>Ligue para confirmar</small>
-            </div>
-            <i class="fas fa-phone" style="opacity: 0.7"></i>
-          </a>
-        </div>
-        <p
-          style="
-            text-align: center;
-            margin-top: 30px;
-            color: var(--marrom-medio);
-            font-style: italic;
-          "
-        >
-          <i
-            class="fas fa-info-circle"
-            style="color: var(--dourado); margin-right: 8px"
-          ></i>
-          Caso tenha restrições alimentares ou necessidades especiais,
-          informe-nos na sua confirmação.
-        </p>
-      </div>
-    </section>
-
-    <!-- PRESENTES -->
-    <section class="presentes-section section" id="presentes">
-      <div class="container">
-        <h2 class="titulo-secao">
-          <i class="fas fa-gift"></i>
-          Sugestões de Presentes
-          <i class="fas fa-heart"></i>
-        </h2>
-        <p
-          style="
-            text-align: center;
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            color: var(--marrom);
-          "
-        >
-          <i
-            class="fas fa-hand-holding-heart"
-            style="color: var(--dourado); margin-right: 10px"
-          ></i>
-          Sua presença é o maior presente que poderíamos receber!
-        </p>
-        <p
-          style="
-            text-align: center;
-            color: var(--marrom-medio);
-            margin-bottom: 40px;
-          "
-        >
-          Mas se desejar nos presentear, deixamos algumas sugestões abaixo:
-        </p>
-        <div class="opcoes-presentes">
-          <!-- PRESENTE 1 -->
-          <div class="presente-card">
-            <div class="presente-icone">
-              <i class="fas fa-store"></i>
-            </div>
-            <h3 class="presente-titulo">Lista de Casamento</h3>
-            <p class="presente-descricao">
-              Escolha um presente da nossa lista em várias lojas parceiras.
-              Presentes práticos para nosso novo lar.
-            </p>
-            <a
-              href="https://www.listadecasamento.com/exemplo"
-              target="_blank"
-              class="botao-mapa"
-              style="
-                margin-top: 10px;
-                background: var(--dourado);
-                color: white;
-                border: none;
-              "
-            >
-              <i class="fas fa-external-link-alt"></i> Acessar Lista
-            </a>
-          </div>
-
-          <!-- PRESENTE 2 -->
-          <div class="presente-card">
-            <div class="presente-icone">
-              <i class="fas fa-money-bill-wave"></i>
-            </div>
-            <h3 class="presente-titulo">Contribuição</h3>
-            <p class="presente-descricao">
-              Para nossa lua de mel e projetos futuros. Contribuições serão
-              muito bem-vindas e apreciadas.
-            </p>
-            <div
-              style="
-                background: var(--creme-claro);
-                padding: 15px;
-                border-radius: 10px;
-                margin-top: 20px;
-                text-align: left;
-              "
-            >
-              <p style="margin-bottom: 5px">
-                <strong>MPESA:</strong> +258 84 474 7730
-              </p>
-              <p>
-                <strong>Transferência:</strong> MZ55 0000 0000 0000 0000 0000 0
-              </p>
-            </div>
-          </div>
-
-          <!-- PRESENTE 3 -->
-          <div class="presente-card">
-            <div class="presente-icone">
-              <i class="fas fa-hands-helping"></i>
-            </div>
-            <h3 class="presente-titulo">Sua Presença</h3>
-            <p class="presente-descricao">
-              A verdadeira alegria está em compartilhar momentos especiais com
-              quem amamos. Sua presença é o presente mais valioso!
-            </p>
-            <div
-              style="
-                margin-top: 25px;
-                padding: 20px;
-                background: linear-gradient(135deg, var(--creme), #f0e9d8);
-                border-radius: 10px;
-              "
-            >
-              <p
-                style="
-                  color: var(--dourado-escuro);
-                  font-style: italic;
-                  font-size: 1.1rem;
-                "
-              >
-                <i class="fas fa-quote-left"></i>
-                O maior presente é celebrar o amor juntos.
-                <i class="fas fa-quote-right"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div
-          style="
-            text-align: center;
-            margin-top: 40px;
-            color: var(--marrom-claro);
-          "
-        >
-          <p>
             <i
-              class="fas fa-lightbulb"
+              class="fas fa-info-circle"
               style="color: var(--dourado); margin-right: 8px"
             ></i>
-            <strong>Contatos para dúvidas:</strong> Romeu (+258 86 066 0750) |
-            Rafaela (+258 84 474 7730)
+            Caso tenha restrições alimentares ou necessidades especiais,
+            informe-nos na sua confirmação.
           </p>
         </div>
-      </div>
-    </section>
-    <!-- MURAL DE MENSAGENS -->
-    <section
-      class="section"
-      style="background: linear-gradient(135deg, #f9f5f0 0%, var(--creme) 100%)"
-    >
-      <div class="container">
-        <h2 class="titulo-secao">
-          <i class="fas fa-comment-heart"></i>
-          Deixe sua Mensagem
-          <i class="fas fa-feather-alt"></i>
-        </h2>
+      </section>
 
-        <p
-          style="
-            text-align: center;
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--marrom);
-          "
-        >
-          <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
-          Compartilhe connosco os seus votos e mensagens de felicidade
-          <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
-        </p>
-
-        <!-- Formulário -->
-        <div
-          style="
-            max-width: 600px;
-            margin: 0 auto 50px;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(93, 64, 55, 0.08);
-          "
-        >
-          <div style="display: flex; gap: 15px; margin-bottom: 25px">
-            <input
-              type="text"
-              id="nome-mensagem"
-              placeholder="Seu nome (opcional)"
-              style="
-                flex: 1;
-                padding: 15px;
-                border: 2px solid var(--creme);
-                border-radius: 10px;
-                font-size: 1.1rem;
-                font-family: inherit;
-              "
-            />
-
-            <select
-              id="relacao-mensagem"
-              style="
-                padding: 15px;
-                border: 2px solid var(--creme);
-                border-radius: 10px;
-                font-size: 1.1rem;
-                font-family: inherit;
-                min-width: 150px;
-              "
-            >
-              <option value="">Sua relação...</option>
-              <option value="familiar">Familiar</option>
-              <option value="amigo">Amigo(a)</option>
-              <option value="colega">Colega</option>
-            </select>
-          </div>
-
-          <textarea
-            id="texto-mensagem"
-            placeholder="Escreva aqui a sua mensagem especial para os noivos..."
-            rows="4"
-            style="
-              width: 100%;
-              padding: 20px;
-              border: 2px solid var(--creme);
-              border-radius: 10px;
-              font-size: 1.2rem;
-              margin-bottom: 25px;
-              resize: vertical;
-              font-family: inherit;
-            "
-          ></textarea>
-
-          <button
-            id="enviar-mensagem"
-            style="
-              background: linear-gradient(
-                135deg,
-                var(--dourado),
-                var(--dourado-escuro)
-              );
-              color: white;
-              border: none;
-              padding: 18px 50px;
-              border-radius: 50px;
-              font-size: 1.2rem;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 12px;
-              margin: 0 auto;
-              transition: all 0.3s;
-            "
-          >
-            <i class="fas fa-paper-plane"></i> Enviar Mensagem
-          </button>
-        </div>
-
-        <!-- Mural onde as mensagens aparecem -->
-        <div
-          id="mural-mensagens"
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-          "
-        >
-          <!-- Mensagens aparecerão aqui -->
-          <div
-            class="mensagem-exemplo"
-            style="
-              background: white;
-              padding: 25px;
-              border-radius: 15px;
-              box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-              border-left: 5px solid var(--dourado);
-              text-align: left;
-              opacity: 0.7;
-              animation: fadeIn 1s ease-out;
-            "
-          >
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 15px;
-                align-items: center;
-              "
-            >
-              <strong style="color: var(--marrom); font-size: 1.1rem"
-                >Exemplo:</strong
-              >
-              <span
-                style="
-                  background: var(--creme);
-                  color: var(--marrom-claro);
-                  padding: 5px 15px;
-                  border-radius: 20px;
-                  font-size: 0.9rem;
-                "
-                >Familiar</span
-              >
-            </div>
-            <p
-              style="font-style: italic; color: var(--marrom); line-height: 1.6"
-            >
-              "Que Deus abençoe esta união com muito amor e felicidade para toda
-              a vida!"
-            </p>
-            <div style="text-align: right; margin-top: 15px">
-              <small style="color: var(--marrom-claro)">
-                <i class="far fa-clock"></i> Hoje
-              </small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RODAPÉ -->
-    <footer class="rodape section" style="padding: 80px 0 40px">
-      <div class="container">
-        <div class="rodape-content">
-          <div class="logo-rodape">R & R</div>
-          <h2 style="font-size: 2.5rem; margin-bottom: 10px; color: white">
-            Rafaela & Romeu
+      <!-- PRESENTES -->
+      <section class="presentes-section section" id="presentes">
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-gift"></i>
+            Sugestões de Presentes
+            <i class="fas fa-heart"></i>
           </h2>
           <p
             style="
-              font-size: 1.2rem;
-              color: rgba(255, 255, 255, 0.9);
+              text-align: center;
+              font-size: 1.3rem;
+              max-width: 800px;
+              margin: 0 auto 20px;
+              color: var(--marrom);
+            "
+          >
+            <i
+              class="fas fa-hand-holding-heart"
+              style="color: var(--dourado); margin-right: 10px"
+            ></i>
+            Sua presença é o maior presente que poderíamos receber!
+          </p>
+          <p
+            style="
+              text-align: center;
+              color: var(--marrom-medio);
               margin-bottom: 40px;
             "
           >
-            26 de Julho de 2026 · Maputo, Moçambique
+            Mas se desejar nos presentear, deixamos algumas sugestões abaixo:
           </p>
-
-          <div class="info-contato">
-            <div class="contato-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <p>Maputo<br />Moçambique</p>
-            </div>
-            <div class="contato-item">
-              <i class="fas fa-phone-alt"></i>
-              <p>+258 86 066 0750<br />+258 84 474 7730</p>
-            </div>
-            <div class="contato-item">
-              <i class="fas fa-envelope"></i>
-              <p>
-                rafaelamacuacua52@gmail.com<br />convitedouradomz@hotmail.com
+          <div class="opcoes-presentes">
+            <!-- PRESENTE 1 -->
+            <div class="presente-card">
+              <div class="presente-icone">
+                <i class="fas fa-store"></i>
+              </div>
+              <h3 class="presente-titulo">Lista de Casamento</h3>
+              <p class="presente-descricao">
+                Escolha um presente da nossa lista em várias lojas parceiras.
+                Presentes práticos para nosso novo lar.
               </p>
-            </div>
-          </div>
-
-          <div class="redes-sociais">
-            <a
-              href="https://www.instagram.com/convitedouradomz?igsh=ejI1OHlndzRhbmd1"
-              class="rede-social"
-              target="_blank"
-            >
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a
-              href="https://www.facebook.com/share/1C5nwxeomx/?mibextid=wwXIfr"
-              class="rede-social"
-              target="_blank"
-            >
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="convitedouradomz@hotmail.com" class="rede-social">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-
-          <div class="copyright">
-            <!-- Logo Convite Dourado -->
-            <div style="margin-bottom: 20px">
-              <img
-                src="logoo.jpeg"
-                alt="Convite Dourado"
-                style="
-                  max-width: 150px;
-                  border-radius: 10px;
-                  margin-bottom: 10px;
-                "
-              />
-              <p style="font-size: 0.9rem; opacity: 0.8">Convite Dourado MZ</p>
-            </div>
-
-            <p>
-              © 2026 Convite do Casamento Rafaela & Romeu feito pela Convites
-              Dourados . Todos os direitos reservados.
-            </p>
-
-            <!-- Instagram -->
-            <div style="margin: 20px 0">
               <a
-                href="https://www.instagram.com/convitedouradomz?igsh=ejI1OHlndzRhbmd1"
+                href="https://www.listadecasamento.com/exemplo"
                 target="_blank"
+                class="botao-mapa"
                 style="
-                  color: var(--dourado);
-                  text-decoration: none;
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 8px;
+                  margin-top: 10px;
+                  background: var(--dourado);
+                  color: white;
+                  border: none;
                 "
               >
-                <i class="fab fa-instagram"></i>
-                @convitedouradomz
+                <i class="fas fa-external-link-alt"></i> Acessar Lista
               </a>
             </div>
 
-            <p style="margin-top: 10px">
-              Feito com <i class="fas fa-heart" style="color: #ff6b6b"></i> para
-              eternizar nosso amor
+            <!-- PRESENTE 2 -->
+            <div class="presente-card">
+              <div class="presente-icone">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <h3 class="presente-titulo">Contribuição</h3>
+              <p class="presente-descricao">
+                Para nossa lua de mel e projetos futuros. Contribuições serão
+                muito bem-vindas e apreciadas.
+              </p>
+              <div
+                style="
+                  background: var(--creme-claro);
+                  padding: 15px;
+                  border-radius: 10px;
+                  margin-top: 20px;
+                  text-align: left;
+                "
+              >
+                <p style="margin-bottom: 5px">
+                  <strong>MPESA:</strong> +258 84 474 7730
+                </p>
+                <p>
+                  <strong>Transferência:</strong> MZ55 0000 0000 0000 0000 0000
+                  0
+                </p>
+              </div>
+            </div>
+
+            <!-- PRESENTE 3 -->
+            <div class="presente-card">
+              <div class="presente-icone">
+                <i class="fas fa-hands-helping"></i>
+              </div>
+              <h3 class="presente-titulo">Sua Presença</h3>
+              <p class="presente-descricao">
+                A verdadeira alegria está em compartilhar momentos especiais com
+                quem amamos. Sua presença é o presente mais valioso!
+              </p>
+              <div
+                style="
+                  margin-top: 25px;
+                  padding: 20px;
+                  background: linear-gradient(135deg, var(--creme), #f0e9d8);
+                  border-radius: 10px;
+                "
+              >
+                <p
+                  style="
+                    color: var(--dourado-escuro);
+                    font-style: italic;
+                    font-size: 1.1rem;
+                  "
+                >
+                  <i class="fas fa-quote-left"></i>
+                  O maior presente é celebrar o amor juntos.
+                  <i class="fas fa-quote-right"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              text-align: center;
+              margin-top: 40px;
+              color: var(--marrom-claro);
+            "
+          >
+            <p>
+              <i
+                class="fas fa-lightbulb"
+                style="color: var(--dourado); margin-right: 8px"
+              ></i>
+              <strong>Contatos para dúvidas:</strong> Hugo (+258 86 066 0750) |
+              Manuela (+258 84 474 7730)
             </p>
           </div>
         </div>
-      </div>
-    </footer>
+      </section>
 
-    <!-- BOTÃO VOLTAR AO TOPO -->
-    <button class="botao-topo" id="botaoTopo" title="Voltar ao topo">
-      <i class="fas fa-chevron-up"></i>
-    </button>
+      <!-- MURAL DE MENSAGENS -->
+      <section
+        class="section"
+        style="
+          background: linear-gradient(135deg, #f9f5f0 0%, var(--creme) 100%);
+        "
+      >
+        <div class="container">
+          <h2 class="titulo-secao">
+            <i class="fas fa-comment-heart"></i>
+            Deixe sua Mensagem
+            <i class="fas fa-feather-alt"></i>
+          </h2>
+
+          <p
+            style="
+              text-align: center;
+              font-size: 1.3rem;
+              max-width: 700px;
+              margin: 0 auto 40px;
+              color: var(--marrom);
+            "
+          >
+            <i class="fas fa-quote-left" style="color: var(--dourado)"></i>
+            Compartilhe connosco os seus votos e mensagens de felicidade
+            <i class="fas fa-quote-right" style="color: var(--dourado)"></i>
+          </p>
+
+          <!-- Formulário -->
+          <div
+            style="
+              max-width: 600px;
+              margin: 0 auto 50px;
+              background: white;
+              padding: 40px;
+              border-radius: 20px;
+              box-shadow: 0 15px 40px rgba(93, 64, 55, 0.08);
+            "
+          >
+            <div style="display: flex; gap: 15px; margin-bottom: 25px">
+              <input
+                type="text"
+                id="nome-mensagem"
+                placeholder="Seu nome (opcional)"
+                style="
+                  flex: 1;
+                  padding: 15px;
+                  border: 2px solid var(--creme);
+                  border-radius: 10px;
+                  font-size: 1.1rem;
+                  font-family: inherit;
+                "
+              />
+
+              <select
+                id="relacao-mensagem"
+                style="
+                  padding: 15px;
+                  border: 2px solid var(--creme);
+                  border-radius: 10px;
+                  font-size: 1.1rem;
+                  font-family: inherit;
+                  min-width: 150px;
+                "
+              >
+                <option value="">Sua relação...</option>
+                <option value="familiar">Familiar</option>
+                <option value="amigo">Amigo(a)</option>
+                <option value="colega">Colega</option>
+              </select>
+            </div>
+
+            <textarea
+              id="texto-mensagem"
+              placeholder="Escreva aqui a sua mensagem especial para os noivos..."
+              rows="4"
+              style="
+                width: 100%;
+                padding: 20px;
+                border: 2px solid var(--creme);
+                border-radius: 10px;
+                font-size: 1.2rem;
+                margin-bottom: 25px;
+                resize: vertical;
+                font-family: inherit;
+              "
+            ></textarea>
+
+            <button
+              id="enviar-mensagem"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--dourado),
+                  var(--dourado-escuro)
+                );
+                color: white;
+                border: none;
+                padding: 18px 50px;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin: 0 auto;
+                transition: all 0.5s ease;
+              "
+            >
+              <i class="fas fa-paper-plane"></i> Enviar Mensagem
+            </button>
+          </div>
+
+          <!-- Mural onde as mensagens aparecem -->
+          <div
+            id="mural-mensagens"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+              gap: 25px;
+              margin-top: 40px;
+            "
+          >
+            <!-- Mensagens aparecerão aqui -->
+            <div
+              class="mensagem-exemplo"
+              style="
+                background: white;
+                padding: 25px;
+                border-radius: 15px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+                border-left: 5px solid var(--dourado);
+                text-align: left;
+                opacity: 0.7;
+                animation: fadeIn 1.2s ease-out;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 15px;
+                  align-items: center;
+                "
+              >
+                <strong style="color: var(--marrom); font-size: 1.1rem"
+                  >Exemplo:</strong
+                >
+                <span
+                  style="
+                    background: var(--creme);
+                    color: var(--marrom-claro);
+                    padding: 5px 15px;
+                    border-radius: 20px;
+                    font-size: 0.9rem;
+                  "
+                  >Familiar</span
+                >
+              </div>
+              <p
+                style="
+                  font-style: italic;
+                  color: var(--marrom);
+                  line-height: 1.6;
+                "
+              >
+                "Que Deus abençoe esta união com muito amor e felicidade para
+                toda a vida!"
+              </p>
+              <div style="text-align: right; margin-top: 15px">
+                <small style="color: var(--marrom-claro)">
+                  <i class="far fa-clock"></i> Hoje
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RODAPÉ -->
+      <footer class="rodape section" style="padding: 80px 0 40px">
+        <div class="container">
+          <div class="rodape-content">
+            <div class="logo-rodape">M & H</div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px; color: white">
+              Manuela & Hugo
+            </h2>
+            <p
+              style="
+                font-size: 1.2rem;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 40px;
+              "
+            >
+              31 de Julho de 2026 · Maputo, Moçambique
+            </p>
+
+            <div class="info-contato">
+              <div class="contato-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Maputo<br />Moçambique</p>
+              </div>
+              <div class="contato-item">
+                <i class="fas fa-phone-alt"></i>
+                <p>+258 86 066 0750<br />+258 84 474 7730</p>
+              </div>
+              <div class="contato-item">
+                <i class="fas fa-envelope"></i>
+                <p>
+                  casamento.manuela.hugo@gmail.com<br />convitedouradomz@hotmail.com
+                </p>
+              </div>
+            </div>
+
+            <div class="redes-sociais">
+              <a
+                href="https://www.instagram.com/convitedouradomz?igsh=ejI1OHlndzRhbmd1"
+                class="rede-social"
+                target="_blank"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.facebook.com/share/1C5nwxeomx/?mibextid=wwXIfr"
+                class="rede-social"
+                target="_blank"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="convitedouradomz@hotmail.com" class="rede-social">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+
+            <div class="copyright">
+              <!-- Logo Convite Dourado -->
+              <div style="margin-bottom: 20px">
+                <img
+                  src="logoo.jpeg"
+                  alt="Convite Dourado"
+                  style="
+                    max-width: 150px;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                  "
+                />
+                <p style="font-size: 0.9rem; opacity: 0.8">
+                  Convite Dourado MZ
+                </p>
+              </div>
+
+              <p>
+                © 2026 Convite do Casamento Manuela & Hugo feito pela Convites
+                Dourados . Todos os direitos reservados.
+              </p>
+
+              <!-- Instagram -->
+              <div style="margin: 20px 0">
+                <a
+                  href="https://www.instagram.com/convitedouradomz?igsh=ejI1OHlndzRhbmd1"
+                  target="_blank"
+                  style="
+                    color: var(--dourado);
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                  "
+                >
+                  <i class="fab fa-instagram"></i>
+                  @convitedouradomz
+                </a>
+              </div>
+
+              <p style="margin-top: 10px">
+                Feito com
+                <i class="fas fa-heart" style="color: #ff6b6b"></i> para
+                eternizar nosso amor
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- BOTÃO VOLTAR AO TOPO -->
+      <button class="botao-topo" id="botaoTopo" title="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+    <!-- Fim do conteúdo do convite -->
+
+    <!-- MODAL DE CONFIRMAÇÃO -->
+    <div
+      id="modal-confirmacao"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s;
+      "
+    >
+      <div
+        style="
+          background: white;
+          padding: 50px;
+          border-radius: 20px;
+          max-width: 500px;
+          width: 90%;
+          text-align: center;
+          position: relative;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          animation: fadeInUp 0.5s;
+        "
+      >
+        <button
+          id="fechar-modal"
+          style="
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--marrom-claro);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+          "
+        >
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div
+          style="
+            background: linear-gradient(
+              135deg,
+              var(--dourado),
+              var(--dourado-escuro)
+            );
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3rem;
+          "
+        >
+          <i class="fas fa-heart"></i>
+        </div>
+
+        <h3
+          style="color: var(--marrom); margin-bottom: 20px; font-size: 1.8rem"
+        >
+          Mensagem Enviada!
+        </h3>
+
+        <p
+          style="
+            color: var(--marrom-medio);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+          "
+        >
+          Obrigado pela sua mensagem especial! <br />
+          Os noivos vão adorar receber o seu carinho.
+        </p>
+
+        <button
+          id="ok-modal"
+          style="
+            background: linear-gradient(
+              135deg,
+              var(--dourado),
+              var(--dourado-escuro)
+            );
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            transition: all 0.3s;
+          "
+        >
+          <i class="fas fa-check"></i> OK
+        </button>
+      </div>
+    </div>
+
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #fechar-modal:hover {
+        background: var(--creme);
+      }
+
+      #ok-modal:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
+      }
+    </style>
 
     <script>
       // ========== INICIALIZAÇÃO ==========
       document.addEventListener("DOMContentLoaded", function () {
         configurarMusica();
+        configurarAbrirConvite();
         iniciarContadorRegressivo();
         configurarNavegacao();
         configurarBotaoTopo();
+        configurarMensagens();
+        configurarModal();
 
         // Personalizar nome do convidado via URL
         const urlParams = new URLSearchParams(window.location.search);
         const nomeConvidado = urlParams.get("nome");
         if (nomeConvidado) {
-          document.getElementById("nome-convidado").textContent =
-            decodeURIComponent(nomeConvidado);
+          // Atualiza o nome na seção "Com muito carinho"
+          const elementoNomes = document.querySelector(".nomes-convidados");
+          if (elementoNomes) {
+            elementoNomes.innerHTML = decodeURIComponent(nomeConvidado);
+          }
         }
       });
 
@@ -2091,9 +2544,52 @@
         }
       }
 
+      // ========== BOTÃO ABRIR CONVITE ==========
+      function configurarAbrirConvite() {
+        const setaAbrir = document.getElementById("abrirConvite");
+        const conteudoConvite = document.getElementById("conteudoConvite");
+        const heroSection = document.querySelector(".hero-section");
+        const scrollIndicator = document.querySelector(".scroll-indicator");
+
+        setaAbrir.addEventListener("click", function () {
+          // Esconder a capa com transição
+          heroSection.style.opacity = "0";
+          heroSection.style.transition = "opacity 0.8s ease";
+
+          setTimeout(() => {
+            heroSection.style.display = "none";
+
+            // Mostrar o conteúdo do convite
+            conteudoConvite.style.display = "block";
+
+            // Mostrar o indicador de scroll
+            if (scrollIndicator) {
+              scrollIndicator.style.display = "block";
+            }
+
+            // Rolar suavemente para o início do convite
+            setTimeout(() => {
+              document.querySelector("#convite").scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }, 100);
+
+            // Mostrar todas as seções com animação
+            const secoes = document.querySelectorAll(".section");
+            secoes.forEach((secao) => {
+              secao.classList.add("active");
+            });
+
+            // Iniciar animações
+            observarElementos();
+          }, 800);
+        });
+      }
+
       // ========== CONTADOR REGRESSIVO ==========
       function iniciarContadorRegressivo() {
-        const dataCasamento = new Date("July 26, 2026 14:00:00").getTime();
+        const dataCasamento = new Date("July 31, 2026 14:00:00").getTime();
 
         function atualizarContador() {
           const agora = new Date().getTime();
@@ -2167,14 +2663,16 @@
         });
 
         // Scroll indicator
-        document
-          .querySelector(".scroll-indicator")
-          .addEventListener("click", function (e) {
+        const scrollIndicator = document.querySelector(".scroll-indicator");
+        if (scrollIndicator) {
+          scrollIndicator.addEventListener("click", function (e) {
             e.preventDefault();
-            document
-              .querySelector("#convite")
-              .scrollIntoView({ behavior: "smooth" });
+            document.querySelector("#contador").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
           });
+        }
       }
 
       // ========== BOTÃO VOLTAR AO TOPO ==========
@@ -2218,37 +2716,101 @@
 
         // Observar elementos que devem ser animados
         document
-          .querySelectorAll(".evento-card, .noivo-card, .presente-card")
+          .querySelectorAll(
+            ".evento-card, .noivo-card, .presente-card, .foto-item, .rsvp-botao"
+          )
           .forEach((el) => {
             el.style.opacity = "0";
             el.style.transform = "translateY(30px)";
-            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
             observer.observe(el);
           });
       }
 
-      // Iniciar observação após carregamento
-      setTimeout(observarElementos, 1000);
+      // ========== MENSAGENS ==========
+      function configurarMensagens() {
+        const botaoEnviar = document.getElementById("enviar-mensagem");
+        const muralMensagens = document.getElementById("mural-mensagens");
 
-      // ========== EFEITOS EXTRAS ==========
-      // Efeito de digitação no nome do convidado
-      function efeitoDigitacao(elemento, texto) {
-        let i = 0;
-        elemento.textContent = "";
+        botaoEnviar.addEventListener("click", function () {
+          const nome =
+            document.getElementById("nome-mensagem").value || "Anônimo";
+          const relacao =
+            document.getElementById("relacao-mensagem").value || "convidado";
+          const texto = document.getElementById("texto-mensagem").value;
 
-        function digitar() {
-          if (i < texto.length) {
-            elemento.textContent += texto.charAt(i);
-            i++;
-            setTimeout(digitar, 50);
+          if (!texto.trim()) {
+            alert("Por favor, escreva uma mensagem para os noivos.");
+            return;
           }
-        }
 
-        digitar();
+          // Criar nova mensagem
+          const novaMensagem = document.createElement("div");
+          novaMensagem.className = "mensagem-item";
+          novaMensagem.style.cssText =
+            "background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); border-left: 5px solid var(--dourado); text-align: left; animation: fadeIn 0.8s ease-out;";
+
+          const relacaoTexto =
+            {
+              familiar: "Familiar",
+              amigo: "Amigo(a)",
+              colega: "Colega",
+            }[relacao] || "Convidado";
+
+          novaMensagem.innerHTML = `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
+              <strong style="color: var(--marrom); font-size: 1.1rem">${nome}</strong>
+              <span style="background: var(--creme); color: var(--marrom-claro); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">${relacaoTexto}</span>
+            </div>
+            <p style="font-style: italic; color: var(--marrom); line-height: 1.6">"${texto}"</p>
+            <div style="text-align: right; margin-top: 15px">
+              <small style="color: var(--marrom-claro)">
+                <i class="far fa-clock"></i> Agora
+              </small>
+            </div>
+          `;
+
+          // Adicionar ao mural (no início)
+          muralMensagens.insertBefore(novaMensagem, muralMensagens.firstChild);
+
+          // Limpar campos
+          document.getElementById("nome-mensagem").value = "";
+          document.getElementById("relacao-mensagem").value = "";
+          document.getElementById("texto-mensagem").value = "";
+
+          // Mostrar modal de confirmação
+          mostrarModalConfirmacao();
+        });
       }
 
-      // Exemplo de uso (descomente se quiser):
-      // efeitoDigitacao(document.getElementById('nome-convidado'), 'Nome do Convidado');
+      // ========== MODAL DE CONFIRMAÇÃO ==========
+      function configurarModal() {
+        const modal = document.getElementById("modal-confirmacao");
+        const fecharModal = document.getElementById("fechar-modal");
+        const okModal = document.getElementById("ok-modal");
+
+        function mostrarModal() {
+          modal.style.display = "flex";
+        }
+
+        function fecharModalFunc() {
+          modal.style.display = "none";
+        }
+
+        // Configurar eventos
+        fecharModal.addEventListener("click", fecharModalFunc);
+        okModal.addEventListener("click", fecharModalFunc);
+
+        // Fechar ao clicar fora do modal
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            fecharModalFunc();
+          }
+        });
+
+        // Expor função para uso externo
+        window.mostrarModalConfirmacao = mostrarModal;
+      }
     </script>
   </body>
 </html>
